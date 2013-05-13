@@ -25,6 +25,7 @@ thickness = 3.6;
 // Vslot 20x20 extrusions
 extrusion = 20;
 
+// Basic 608ZZ bearing
 module 608zz(){
 	difference(){
 		cylinder( r=22.1/2, h=7.05 );
@@ -41,7 +42,5 @@ module 608zz(){
 		}	
 	}
 }
-
-#608zz();
 
 		
