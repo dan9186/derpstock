@@ -26,7 +26,7 @@ thickness = 3.6;
 extrusion = 20;
 
 // Basic 608ZZ bearing
-module 608zz(){
+module 608ZZ(){
 	difference(){
 		cylinder( r=22.1/2, h=7.05 );
 		translate( [0,0,-0.25] ) cylinder( r=8/2, h=7.5 );
@@ -43,4 +43,18 @@ module 608zz(){
 	}
 }
 
-		
+module vslot_universal_plate(){
+	translate( [0,0,0.5] )
+	difference(){
+		minkowski(){
+			cube( [40.6,40.6,0.5], center=true );
+			cylinder(r=12, h=0.5, center=true);
+		}
+
+		for( i = [0:3] ){
+			rotate( i * 360/4, [0, 0, 1] )
+			translate( [40.6/2, 40.6/2, 0] )
+			cylinder( $fn=20, r=5/2, h=2, center=true );
+		}
+	}
+}
