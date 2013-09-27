@@ -77,6 +77,11 @@ module nema17() {
 	}
 }
 
+module screw_socket() {
+	cylinder(r=m3_wide_radius, h=20, center=true);
+	translate([0, 0, 3.8]) cylinder(r=3.5, h=5);
+}
+
 module extrusion_cutout(h, extra) {
 	difference() {
 		cube([extrusion+extra, extrusion+extra, h], center=true);
@@ -84,6 +89,32 @@ module extrusion_cutout(h, extra) {
 			translate([extrusion/2, 0, 0])
 			cube([6, 2.5, h+1], center=true);
 		}
+	}
+}
+
+module vertex_outline( height ){
+	difference(){
+		union(){
+			// Builds the rounded front of the vertex
+			intersection() {
+				translate([0, 36 - height/2 - 6.5, 0])
+				cylinder(r=36, h=height, center=true, $fn=60);
+				translate([0, -(50-5.5-height/2), 0]) rotate([0, 0, 30])
+				cylinder(r=50, h=height+1, center=true, $fn=6);
+			}
+
+			// Builds the triangular back piece of the vertex
+			translate([0, 40.5, 0])
+			intersection() {
+				rotate([0, 0, -90])
+				cylinder(r=55, h=height, center=true, $fn=3);
+				translate([0, 10, 0])
+				cube([100, 100, 2 * height], center=true);
+				translate([0, -10, 0]) rotate([0, 0, 30])
+				cylinder(r=55, h=height+1, center=true, $fn=6);
+			}
+		}
+		extrusion_cutout( height + 2, 2 * extra_radius );
 	}
 }
 
