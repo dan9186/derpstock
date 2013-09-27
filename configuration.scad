@@ -4,6 +4,11 @@
 	Original Base: Kossel https://github.com/jcrocholl/kossel
 */
 
+//******* Includes *******//
+// More Fontz! by polymaker http://www.thingiverse.com/thing:13677
+include <Orbitron_Medium.scad>;
+
+
 //******* Varaibles *******//
 
 // Increase to add extra space to holes.
@@ -26,7 +31,7 @@ motor_shaft_radius = motor_shaft_diameter/2 + extra_radius;
 // Frame brackets. M3x8mm screws work best with 3.6 mm brackets.
 thickness = 3.6;
 
-// Vslot 20x20 extrusions
+// OpenBeam or Misumi use 15, for Vslot 20
 extrusion = 20;
 
 // Placement for the NEMA17 stepper motors.
@@ -52,4 +57,12 @@ module 608ZZ(){
 			translate( [0,0,-.25] ) cylinder( r=4+1.6, h=2 );
 		}	
 	}
+}
+
+module derpstock_logo(){
+	// steps - the amount of detail, the higher the more detailed.
+	// center - whether the output is centered or not
+	// extra - extra distance between characters
+	// height - height of extrusion, 0 for 2d
+	Orbitron_Medium("DERPSTOCK", steps=2, center=true, extra=10, height=5);
 }
