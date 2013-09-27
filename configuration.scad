@@ -1,5 +1,6 @@
 /*
 	Authors: Daniel Hess (dan9186)
+			 Claudio (orias)
 	Original Base: Kossel https://github.com/jcrocholl/kossel
 */
 
