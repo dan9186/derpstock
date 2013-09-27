@@ -77,6 +77,16 @@ module nema17() {
 	}
 }
 
+module extrusion_cutout(h, extra) {
+	difference() {
+		cube([extrusion+extra, extrusion+extra, h], center=true);
+		for (a = [0:90:359]) rotate([0, 0, a]) {
+			translate([extrusion/2, 0, 0])
+			cube([6, 2.5, h+1], center=true);
+		}
+	}
+}
+
 module derpstock_logo(){
 	// steps - the amount of detail, the higher the more detailed.
 	// center - whether the output is centered or not
