@@ -4,12 +4,15 @@
 	Original Base: Kossel https://github.com/jcrocholl/kossel
 */
 
+//******* Varaibles *******//
+
 // Increase to add extra space to holes.
 extra_radius = 0.1;
 
 // OD = outside diameter, corner to corner.
 m3_nut_od = 6.1;
 m3_nut_radius = m3_nut_od/2 + 0.2 + extra_radius;
+m3_washer_radius = 3.5 + extra_radius;
 
 // Major diameter of metric 3mm thread.
 m3_major = 2.85;
@@ -26,6 +29,13 @@ thickness = 3.6;
 // Vslot 20x20 extrusions
 extrusion = 20;
 
+// Placement for the NEMA17 stepper motors.
+motor_offset = 44;
+motor_length = 47;
+
+
+//******* Universal Objects *******//
+
 // Basic 608ZZ bearing
 module 608ZZ(){
 	difference(){
@@ -41,21 +51,5 @@ module 608ZZ(){
 			cylinder( r=8/2+5.5, h=1.5 );
 			translate( [0,0,-.25] ) cylinder( r=4+1.6, h=2 );
 		}	
-	}
-}
-
-module vslot_universal_plate(){
-	translate( [0,0,0.5] )
-	difference(){
-		minkowski(){
-			cube( [40.6,40.6,0.5], center=true );
-			cylinder(r=12, h=0.5, center=true);
-		}
-
-		for( i = [0:3] ){
-			rotate( i * 360/4, [0, 0, 1] )
-			translate( [40.6/2, 40.6/2, 0] )
-			cylinder( $fn=20, r=5/2, h=2, center=true );
-		}
 	}
 }
