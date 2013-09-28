@@ -97,9 +97,9 @@ module vertex_outline( height ){
 		union(){
 			// Builds the rounded front of the vertex
 			intersection() {
-				translate([0, 36 - height/2 - 6.5, 0])
+				translate([0, 36 - extrusion/2 - 6.5, 0])
 				cylinder(r=36, h=height, center=true, $fn=60);
-				translate([0, -(50-5.5-height/2), 0]) rotate([0, 0, 30])
+				translate([0, -(50-5.5-extrusion/2), 0]) rotate([0, 0, 30])
 				cylinder(r=50, h=height+1, center=true, $fn=6);
 			}
 
