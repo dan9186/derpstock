@@ -7,8 +7,8 @@ $fn = 24;
 
 union(){
 	// Pad to improve print bed adhesion for slim ends
-	translate([-37.5, 52.2, -extrusion/2]) cylinder(r=8, h=0.5);
-	translate([37.5, 52.2, -extrusion/2]) cylinder(r=8, h=0.5);
+	translate( [-37.5, 52.2, -extrusion/2] ) cylinder(r=8, h=0.5);
+	translate( [37.5, 52.2, -extrusion/2] ) cylinder(r=8, h=0.5);
 
 	difference(){
 		// Start with a base outline that is only one extrusion width high
@@ -75,6 +75,10 @@ union(){
 			% screw_socket();
 			translate( [0,0,-2] ) cylinder( r1=7, r2=4, h=4, center=true );
 		}
+
+		// Idlear shaft cutout
+		translate( [0,extrusion/2 + 45/2 + 5,0] )
+		rotate( [90,0,0] ) cylinder( r=2, h=45, center=true );
 
 		// Bearing for idler
 		% translate([0,32,0]) rotate([90,0,0]) 608ZZ();
