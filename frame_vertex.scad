@@ -5,7 +5,7 @@ $fn = 24;
 %extrusion_cutout( extrusion + 20, 2  * extra_radius );
 
 
-/*union(){
+union(){
 	// Pad to improve print bed adhesion for slim ends
 	translate([-37.5, 52.2, -extrusion/2]) cylinder(r=8, h=0.5);
 	translate([37.5, 52.2, -extrusion/2]) cylinder(r=8, h=0.5);
@@ -44,30 +44,39 @@ $fn = 24;
 			}
 			cylinder(r=6, h=1, center=true);
 		}
-	}
 
-	// Bearing for idler
-	% translate([0,32,0]) rotate([90,0,0]) 608ZZ();
-}*/
-
-//for (z = [0:30:extrusion]) {
-	//translate([0, -7.5-extra_radius, z+7.5-extrusion/2]) rotate([90, 0, 0])
-	//screw_socket_cone();
-//	for (a = [-1, 1]) {
-//		rotate([0, 0, 30*a]) { //translate([-16*a, 111, z+7.5-extrusion/2]) {
-			// % rotate([90, 0, 0]) extrusion_cutout(200, 0);
-			// Screw sockets.
-			for (y = [44, 88]) {
-				translate([0, y, 0]) rotate([0, 90, 0])
-				screw_socket();
-			}
-			// Nut tunnels.
-			/*for (z = [-1, 1]) {
-				scale([1, 1, z]) translate([0, -100, 3]) minkowski() {
-					rotate([0, 0, -a*30]) cylinder(r=4, h=16, $fn=6);
-					cube([0.1, 5, 0.1], center=true);
+		for (a = [-1, 1]) {
+			// Side screw cutouts
+			translate( [0,-30,0] )
+			rotate([0, 0, 30*a]) { //translate([-16*a, 111, z+7.5-extrusion/2]) {
+				for (y = [51, 90]) {
+					translate([a*7.5, y, 0]) rotate([0, a*90, 0]) screw_socket();
+					% translate([a*7.5, y, 0]) rotate([0, a*90, 0]) screw_socket();
 				}
-			}*/
-//		}
-//	}
-//}
+			}
+
+			rotate([0, 0, 30*a]) translate([-16*a, 111, 0]) {
+				// Nut tunnels.
+				for (y = [0:4]) {
+					translate([0, -98-y, (extrusion/4 + 4)])
+					rotate([0, 0, -a*30])
+					cylinder(r=4, h=extrusion/2+1, center=true, $fn=6);
+					translate([0, -98-y, -(extrusion/4 + 4)])
+					rotate([0, 0, -a*30])
+					cylinder(r=4, h=extrusion/2+1, center=true, $fn=6);
+				}
+			}
+		}
+
+		// Front screw cutout
+		translate( [0,-extrusion/2,0] )
+		rotate( [90,0,0] ){
+			screw_socket();
+			% screw_socket();
+			translate( [0,0,-2] ) cylinder( r1=7, r2=4, h=4, center=true );
+		}
+
+		// Bearing for idler
+		% translate([0,32,0]) rotate([90,0,0]) 608ZZ();
+	}
+}
