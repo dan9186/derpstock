@@ -2,6 +2,7 @@ include <configuration.scad>;
 
 $fn = 24;
 
+translate( [0,0,extrusion/2] )
 union(){
 	// Pad to improve print bed adhesion for slim ends
 	translate( [-37.5, 52.2, -extrusion/2] ) cylinder(r=8, h=0.5);
@@ -42,30 +43,33 @@ union(){
 			cylinder(r=6, h=1, center=true);
 		}
 
-		for (a = [-1, 1]) {
+		// Repeat the same thing for the left and right sides
+		for (lr = [-1, 1]) {
 			// Side screw cutouts
 			translate( [0,-30,0] )
-			rotate([0, 0, 30*a]) {
+			rotate([0, 0, 30*lr]) {
 				for (y = [51, 90]) {
-					# translate([a*7.5, y, 0]) rotate([0, a*90, 0]) screw_socket();
+					# translate([lr*7.5, y, 0]) rotate([0, lr*90, 0]) screw_socket();
 				}
 			}
 
 			// Nut tunnels
-			rotate([0, 0, 30*a]) translate([-16*a, 111, 0]) {	
-				for (y = [0:4]) {
-					translate([0, -98-y, (extrusion/4 + 4)])
-					rotate([0, 0, -a*30])
-					cylinder(r=4, h=extrusion/2+1, center=true, $fn=6);
-					translate([0, -98-y, -(extrusion/4 + 4)])
-					rotate([0, 0, -a*30])
-					cylinder(r=4, h=extrusion/2+1, center=true, $fn=6);
+			rotate([0, 0, 30*lr]) 
+			translate([-16*lr, 111, 0]) {
+				translate([0, -99.5,0])
+				// Repeat the same thing for top and bottom
+				for (z = [-1, 1]){
+					hull(){
+						translate([0,2.5,z*(extrusion/4+0.5+4)]) rotate([0, 0, -lr*30])
+						cylinder(r=4, h=extrusion/2+1, center=true, $fn=6);
+						translate([0,-2.5,z*(extrusion/4+0.5+4)]) rotate([0, 0, -lr*30])
+						cylinder(r=4, h=extrusion/2+1, center=true, $fn=6);
+					}
 				}
 			}
 		}
 
 		// Front screw cutout
-		
 		rotate( [90,0,0] ){
 			# translate( [0,0,extrusion/2] ) screw_socket();
 			translate( [0,0,extrusion/2+extra_radius-2] )
@@ -80,6 +84,6 @@ union(){
 		% translate([0,32,0]) rotate([90,0,0]) 608ZZ();
 
 		// Extrusion
-		//% extrusion_cutout( extrusion + 20, 2  * extra_radius );
+		% extrusion_cutout( extrusion + 20, 2  * extra_radius );
 	}
 }
