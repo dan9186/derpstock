@@ -51,7 +51,7 @@ union(){
 				}
 			}
 
-			// Nut tunnels.
+			// Nut tunnels
 			rotate([0, 0, 30*a]) translate([-16*a, 111, 0]) {	
 				for (y = [0:4]) {
 					translate([0, -98-y, (extrusion/4 + 4)])
@@ -65,10 +65,11 @@ union(){
 		}
 
 		// Front screw cutout
-		translate( [0,-extrusion/2,0] )
+		
 		rotate( [90,0,0] ){
-			# screw_socket();
-			translate( [0,0,-2] ) cylinder( r1=7, r2=4, h=4, center=true );
+			# translate( [0,0,extrusion/2] ) screw_socket();
+			translate( [0,0,extrusion/2+extra_radius-2] )
+			cylinder( r1=7, r2=4, h=4, center=true );
 		}
 
 		// Idlear shaft cutout
@@ -79,6 +80,6 @@ union(){
 		% translate([0,32,0]) rotate([90,0,0]) 608ZZ();
 
 		// Extrusion
-		% extrusion_cutout( extrusion + 20, 2  * extra_radius );
+		//% extrusion_cutout( extrusion + 20, 2  * extra_radius );
 	}
 }
