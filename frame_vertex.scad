@@ -29,9 +29,9 @@ union(){
 
 			// Idler support cones.
 			translate([0, 26+0-30+2.5, 0]) rotate([-90, 0, 0])
-			cylinder(r1=30, r2=2, h=30-10/2);
+			cylinder(r1=30, r2=m3_wide_radius, h=30-10/2);
 			translate([0, 26+0+30+2.5, 0]) rotate([90, 0, 0])
-			cylinder(r1=30, r2=2, h=30-10/2);
+			cylinder(r1=30, r2=m3_wide_radius, h=30-10/2);
 		}
 
 		// Back space cutout
@@ -50,13 +50,12 @@ union(){
 			translate( [0,-30,0] )
 			rotate([0, 0, 30*a]) { //translate([-16*a, 111, z+7.5-extrusion/2]) {
 				for (y = [51, 90]) {
-					translate([a*7.5, y, 0]) rotate([0, a*90, 0]) screw_socket();
-					% translate([a*7.5, y, 0]) rotate([0, a*90, 0]) screw_socket();
+					# translate([a*7.5, y, 0]) rotate([0, a*90, 0]) screw_socket();
 				}
 			}
 
-			rotate([0, 0, 30*a]) translate([-16*a, 111, 0]) {
-				// Nut tunnels.
+			// Nut tunnels.
+			rotate([0, 0, 30*a]) translate([-16*a, 111, 0]) {	
 				for (y = [0:4]) {
 					translate([0, -98-y, (extrusion/4 + 4)])
 					rotate([0, 0, -a*30])
@@ -71,8 +70,7 @@ union(){
 		// Front screw cutout
 		translate( [0,-extrusion/2,0] )
 		rotate( [90,0,0] ){
-			screw_socket();
-			% screw_socket();
+			# screw_socket();
 			translate( [0,0,-2] ) cylinder( r1=7, r2=4, h=4, center=true );
 		}
 
