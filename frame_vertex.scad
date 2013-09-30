@@ -68,7 +68,7 @@ union(){
 		translate( [0,-extrusion/2,0] )
 		rotate( [90,0,0] ){
 			# screw_socket();
-			% translate( [0,0,-2] ) cylinder( r1=7, r2=4, h=4, center=true );
+			translate( [0,0,-2] ) cylinder( r1=7, r2=4, h=4, center=true );
 		}
 
 		// Idlear shaft cutout
