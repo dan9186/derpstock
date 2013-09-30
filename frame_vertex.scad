@@ -48,7 +48,7 @@ union(){
 		for (a = [-1, 1]) {
 			// Side screw cutouts
 			translate( [0,-30,0] )
-			rotate([0, 0, 30*a]) { //translate([-16*a, 111, z+7.5-extrusion/2]) {
+			rotate([0, 0, 30*a]) {
 				for (y = [51, 90]) {
 					# translate([a*7.5, y, 0]) rotate([0, a*90, 0]) screw_socket();
 				}
