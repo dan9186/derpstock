@@ -2,9 +2,6 @@ include <configuration.scad>;
 
 $fn = 24;
 
-%extrusion_cutout( extrusion + 20, 2  * extra_radius );
-
-
 union(){
 	// Pad to improve print bed adhesion for slim ends
 	translate( [-37.5, 52.2, -extrusion/2] ) cylinder(r=8, h=0.5);
@@ -29,9 +26,9 @@ union(){
 
 			// Idler support cones.
 			translate([0, 26+0-30+2.5, 0]) rotate([-90, 0, 0])
-			cylinder(r1=30, r2=m3_wide_radius, h=30-10/2);
+			cylinder(r1=30, r2=m3_wide_radius + 5*extra_radius, h=30-10/2);
 			translate([0, 26+0+30+2.5, 0]) rotate([90, 0, 0])
-			cylinder(r1=30, r2=m3_wide_radius, h=30-10/2);
+			cylinder(r1=30, r2=m3_wide_radius + 5*extra_radius, h=30-10/2);
 		}
 
 		// Back space cutout
@@ -71,7 +68,7 @@ union(){
 		translate( [0,-extrusion/2,0] )
 		rotate( [90,0,0] ){
 			# screw_socket();
-			translate( [0,0,-2] ) cylinder( r1=7, r2=4, h=4, center=true );
+			% translate( [0,0,-2] ) cylinder( r1=7, r2=4, h=4, center=true );
 		}
 
 		// Idlear shaft cutout
@@ -80,5 +77,8 @@ union(){
 
 		// Bearing for idler
 		% translate([0,32,0]) rotate([90,0,0]) 608ZZ();
+
+		// Extrusion
+		% extrusion_cutout( extrusion + 20, 2  * extra_radius );
 	}
 }
