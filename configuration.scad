@@ -24,10 +24,17 @@ m3_washer_radius = 3.5 + extra_radius;
 m3_major = 2.85;
 m3_radius = m3_major/2 + extra_radius;
 m3_wide_radius = m3_major/2 + extra_radius + 0.2;
+m3_length = 13;
+m3_socket_radius = 3.5;
+m3_socket_height = 5;
 
 // NEMA17 stepper motors.
 motor_shaft_diameter = 5;
 motor_shaft_radius = motor_shaft_diameter/2 + extra_radius;
+
+// Placement for the NEMA17 stepper motors.
+motor_offset = 44;
+motor_length = 47;
 
 // Frame brackets. M3x8mm screws work best with 3.6 mm brackets.
 thickness = 3.6;
@@ -35,9 +42,9 @@ thickness = 3.6;
 // OpenBeam or Misumi use 15, for Vslot 20
 extrusion = 20;
 
-// Placement for the NEMA17 stepper motors.
-motor_offset = 44;
-motor_length = 47;
+// Sticky tab to hold glass in place on glass tabs
+sticky_width = 25.4;
+sticky_length = 25.4;
 
 
 //******* Universal Objects *******//
@@ -99,8 +106,9 @@ module nema17() {
 }
 
 module screw_socket() {
-	cylinder(r=m3_wide_radius, h=20, center=true);
-	translate([0, 0, 3.8]) cylinder(r=3.5, h=5);
+	translate([0,0,-m3_length])
+	cylinder(r=m3_wide_radius, h=m3_length+m3_socket_height+1);
+	cylinder(r=m3_socket_radius, h=m3_socket_height);
 }
 
 module extrusion_cutout(h, extra) {

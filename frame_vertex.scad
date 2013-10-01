@@ -49,7 +49,7 @@ union(){
 			translate( [0,-30,0] )
 			rotate([0, 0, 30*lr]) {
 				for (y = [51, 90]) {
-					# translate([lr*7.5, y, 0]) rotate([0, lr*90, 0]) screw_socket();
+					# translate([lr*11.4, y, 0]) rotate([0, lr*90, 0]) screw_socket();
 				}
 			}
 
@@ -71,9 +71,10 @@ union(){
 
 		// Front screw cutout
 		rotate( [90,0,0] ){
-			# translate( [0,0,extrusion/2] ) screw_socket();
-			translate( [0,0,extrusion/2+extra_radius-2] )
-			cylinder( r1=7, r2=4, h=4, center=true );
+			# translate([0,0,extrusion/2+extra_radius+m3_socket_height])
+			screw_socket();
+			translate([0,0,extrusion/2+extra_radius-2])
+			cylinder(r1=7, r2=4, h=4, center=true);
 		}
 
 		// Idlear shaft cutout
