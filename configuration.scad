@@ -1,6 +1,7 @@
 /*
 	Authors: Daniel Hess (dan9186)
 			 Claudio (orias)
+	Git Hub:  https://github.com/dan9186/Derpstock
 	Original Base: Kossel https://github.com/jcrocholl/kossel
 */
 
@@ -20,13 +21,15 @@ m3_nut_od = 6.1;
 m3_nut_radius = m3_nut_od/2 + 0.2 + extra_radius;
 m3_washer_radius = 3.5 + extra_radius;
 
-// Major diameter of metric 3mm thread.
+// Major diameter of M3 scres for motor
 m3_major = 2.85;
 m3_radius = m3_major/2 + extra_radius;
 m3_wide_radius = m3_major/2 + extra_radius + 0.2;
 m3_length = 13;
 m3_socket_radius = 3.5;
 m3_socket_height = 5;
+
+// Major diameter of screws
 
 // NEMA17 stepper motors.
 motor_shaft_diameter = 5;
@@ -36,7 +39,7 @@ motor_shaft_radius = motor_shaft_diameter/2 + extra_radius;
 motor_offset = 44;
 motor_length = 47;
 
-// Frame brackets. M3x8mm screws work best with 3.6 mm brackets.
+// Generalized thickness of any walls or tabs
 thickness = 3.6;
 
 // OpenBeam or Misumi use 15, for Vslot 20
