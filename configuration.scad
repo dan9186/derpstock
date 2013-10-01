@@ -143,7 +143,29 @@ module vertex_outline( height ){
 				cylinder(r=55, h=height+1, center=true, $fn=6);
 			}
 		}
+
+		// Remove the material for the extrusion
 		extrusion_cutout( height + 2, 2 * extra_radius );
+
+		// Add front screw sockets
+		// If there is room for two screws then allow it else do one in the center
+		if( height >= extrusion+2*m3_socket_radius+20*extra_space ){
+			for( z=[-1,1] ){
+				rotate( [90,0,0] ){
+					# translate([0,z*(height/2-extrusion/2),extrusion/2+extra_radius+m3_socket_height])
+					screw_socket();
+					translate([0,z*(height/2-extrusion/2),extrusion/2+extra_radius-2])
+					cylinder(r1=7, r2=4, h=4, center=true);
+				}
+			}
+		}else{
+			rotate( [90,0,0] ){
+				# translate([0,0,extrusion/2+extra_radius+m3_socket_height])
+				screw_socket();
+				translate([0,0,extrusion/2+extra_radius-2])
+				cylinder(r1=7, r2=4, h=4, center=true);
+			}
+		}
 	}
 }
 
