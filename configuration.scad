@@ -15,7 +15,7 @@ include <Orbitron_Medium.scad>;
 // Increase to add extra space to holes.
 extra_radius = 0.1;
 extra_space = 0.1;
-// 4.5 works well, as a tight fit //
+// 4.5 - 5 for virtually no side to side play //
 extra_extrusion_clearance = 5;
 
 // OD = outside diameter, corner to corner.
