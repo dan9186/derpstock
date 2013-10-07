@@ -77,6 +77,6 @@ union(){
 		% translate([0,32,0]) rotate([90,0,0]) 608ZZ();
 
 		// Extrusion
-		% extrusion_cutout( extrusion + 20, 2  * extra_radius );
+		% extrusion_cutout( extrusion + 20, extra_extrusion_space );
 	}
 }

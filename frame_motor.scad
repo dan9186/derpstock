@@ -85,7 +85,7 @@ module frame_motor() {
 			translate([20,-extrusion/2,0]) rotate([90,-90,30])
 			scale([0.1,0.1,1]) derpstock_logo();
 	
-			% extrusion_cutout( motor_mount_height+20, 2 * extra_radius );
+			% extrusion_cutout( motor_mount_height+20, extra_extrusion_space );
 		}
 	}
 }
