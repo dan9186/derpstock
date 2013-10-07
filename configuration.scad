@@ -16,7 +16,7 @@ include <Orbitron_Medium.scad>;
 extra_radius = 0.1;
 extra_space = 0.1;
 // 4.5 - 5 for virtually no side to side play //
-extra_extrusion_clearance = 5;
+extra_extrusion_space = 5*extra_space;
 
 // OD = outside diameter, corner to corner.
 m3_nut_od = 6.1;
@@ -151,7 +151,7 @@ module vertex_outline( height ){
 		}
 
 		// Remove the material for the extrusion
-		extrusion_cutout( height + 2, 2 * extra_radius );
+		extrusion_cutout( height + 2, extra_extrusion_space );
 
 		// Add front screw sockets
 		// If there is room for two screws then allow it else do one in the center
