@@ -10,13 +10,28 @@
 include <Orbitron_Medium.scad>;
 
 
-//******* Varaibles *******//
+//******* Varaibles to Adjust *******//
 
 // Increase to add extra space to holes.
 extra_radius = 0.1;
 extra_space = 0.1;
 // 4.5 - 5 for virtually no side to side play //
 extra_extrusion_space = 5*extra_space;
+
+// The diameter and length of the screws needed for the tnuts
+tnut_screw_diameter = 5;
+tnut_screw_length = 12;
+
+// Major diameter of screws
+
+// NEMA17 stepper motors.
+motor_shaft_diameter = 5;
+motor_shaft_radius = motor_shaft_diameter/2 + extra_radius;
+motor_screw_diameter = 3;
+
+// Placement for the NEMA17 stepper motors.
+motor_offset = 44;
+motor_length = 47;
 
 // OD = outside diameter, corner to corner.
 m3_nut_od = 6.1;
@@ -31,15 +46,6 @@ m3_length = 13;
 m3_socket_radius = 3.5;
 m3_socket_height = 5;
 
-// Major diameter of screws
-
-// NEMA17 stepper motors.
-motor_shaft_diameter = 5;
-motor_shaft_radius = motor_shaft_diameter/2 + extra_radius;
-
-// Placement for the NEMA17 stepper motors.
-motor_offset = 44;
-motor_length = 47;
 
 // Generalized thickness of any walls or tabs
 thickness = 3.6;
@@ -94,27 +100,34 @@ module microswitch() {
 
 // NEMA 17 stepper motor.
 module nema17() {
-	//difference() {
-		union() {
-			translate([0, 0, -motor_length/2]) intersection() {
-				cube([42.2, 42.2, motor_length], center=true);
-				cylinder(r=25.1, h=motor_length+1, center=true, $fn=60);
-			}
-			cylinder(r=11, h=4, center=true, $fn=32);
-			# cylinder(r=11+10*extra_radius, h=20, center=true, $fn=60);
-			cylinder(r=2.5, h=48, center=true, $fn=24);
+	union() {
+		translate([0, 0, -motor_length/2]) intersection() {
+			cube([42.2, 42.2, motor_length], center=true);
+			cylinder(r=25.1, h=motor_length+1, center=true, $fn=60);
 		}
-		for (a = [0:90:359]) {
-			rotate([0, 0, a]) translate([15.5, 15.5, 0])
-			# cylinder(r=m3_radius, h=20, center=true, $fn=12);
-		}
-	//}
+		cylinder(r=11, h=4, center=true, $fn=32);
+		# cylinder(r=11+10*extra_radius, h=20, center=true, $fn=60);
+		cylinder(r=2.5, h=48, center=true, $fn=24);
+	}
+	for (a = [0:90:359]) {
+		rotate([0, 0, a]) translate([15.5, 15.5, 0])
+		# cylinder(r=motor_screw_diameter/2 + extra_radius, h=20, center=true, $fn=12);
+	}
 }
 
-module screw_socket() {
-	translate([0,0,-m3_length])
-	cylinder(r=m3_wide_radius, h=m3_length+m3_socket_height+1);
-	cylinder(r=m3_socket_radius, h=m3_socket_height);
+module screw_socket(screw_diameter, screw_length) {
+	// Metric socket cap dimension are
+	// socket diameter = 1.5D
+	// socket height = 1.25D
+	// diameter = D
+	// length = L
+	union(){
+		// Socket cap
+		cylinder(r=1.5*screw_diameter/2+extra_radius, h=1.25*screw_diameter);
+		// Screw shaft
+		translate([0,0,-(screw_length+extra_space)])
+		cylinder(r=screw_diameter/2+extra_radius, h=screw_length+extra_space+1);
+	}
 }
 
 module extrusion_cutout(h, extra) {
@@ -155,20 +168,21 @@ module vertex_outline( height ){
 
 		// Add front screw sockets
 		// If there is room for two screws then allow it else do one in the center
-		if( height >= extrusion+2*m3_socket_radius+20*extra_space ){
+		if( height >= extrusion+1.5*tnut_screw_diameter+20*extra_space ){
 			for( z=[-1,1] ){
 				rotate( [90,0,0] ){
-					# translate([0,z*(height/2-extrusion/2),extrusion/2+extra_radius+m3_socket_height])
-					screw_socket();
-					translate([0,z*(height/2-extrusion/2),extrusion/2+extra_radius-2])
+					# translate([0,z*(height/2-extrusion/2),extrusion/2+extra_space+tnut_screw_diameter])
+					screw_socket(tnut_screw_diameter,tnut_screw_length);
+					translate([0,z*(height/2-extrusion/2),extrusion/2+extra_extrusion_space/2-2])
 					cylinder(r1=7, r2=4, h=4, center=true);
 				}
 			}
 		}else{
 			rotate( [90,0,0] ){
-				# translate([0,0,extrusion/2+extra_radius+m3_socket_height])
-				screw_socket();
-				translate([0,0,extrusion/2+extra_radius-2])
+				// Socket Screw
+				# translate([0,0,extrusion/2+extra_space+tnut_screw_diameter])
+				screw_socket(tnut_screw_diameter,tnut_screw_length);
+				translate([0,0,extrusion/2+extra_extrusion_space/2-2])
 				cylinder(r1=7, r2=4, h=4, center=true);
 			}
 		}

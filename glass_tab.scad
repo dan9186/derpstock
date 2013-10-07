@@ -11,7 +11,8 @@ module glass_tab() {
 			translate([0, extrusion/2+sticky_length/2, 0])
 			cube([sticky_width, sticky_length, thickness], center=true);
 		}
-		# translate([0,0,thickness-m3_socket_height/10]) screw_socket();
+		# translate([0,0,thickness-m3_socket_height/10])
+		screw_socket(tnut_screw_diameter, tnut_screw_length);
 	}
 
 	// Extrusion preview

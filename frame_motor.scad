@@ -48,7 +48,8 @@ module frame_motor() {
 					translate( [0,-30,z*(motor_mount_height/2-extrusion/2)] )
 					rotate([0, 0, 30*lr]) {
 						for(y=[51, 90]) {
-							# translate([lr*11.4, y, 0]) rotate([0, lr*90, 0]) screw_socket();
+							# translate([lr*11.4, y, 0]) rotate([0, lr*90, 0])
+							screw_socket(tnut_screw_diameter, tnut_screw_length);
 						}
 					}
 				}
@@ -82,7 +83,7 @@ module frame_motor() {
 			}
 	
 			// Logo for the front side of the object
-			translate([20,-extrusion/2,0]) rotate([90,-90,30])
+			*translate([20,-extrusion/2,0]) rotate([90,-90,30])
 			scale([0.1,0.1,1]) derpstock_logo();
 	
 			% extrusion_cutout( motor_mount_height+20, extra_extrusion_space );

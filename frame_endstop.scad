@@ -2,24 +2,29 @@ include <configuration.scad>;
 
 module endstop(){
 	difference(){
+		// Outside cube shape
 		union(){
-			cube([extrusion, m3_socket_height*2, extrusion], center=true);
+			cube([extrusion, 1.25*tnut_screw_diameter, extrusion], center=true);
 			translate([0, 0, -extrusion/4])
-			cube([extrusion+2, m3_socket_height*2, extrusion/2], center=true);
+			cube([extrusion+2, 1.25*tnut_screw_diameter, extrusion/2], center=true);
 			translate([0, 2, 0])
-			cube([2.5, m3_socket_height*2, extrusion], center=true);
+			cube([2.5, 1.25*tnut_screw_diameter, extrusion], center=true);
 		}
+
+		// Screw socket cutout
 		translate([0, 0, 3]) rotate([90, 0, 0]){
-			cylinder(r=m3_wide_radius, h=20, center=true, $fn=12);
-			translate([0, 0, 3.6-m3_socket_height]){
-				cylinder(r=3, h=10, $fn=24);
+			cylinder(r=tnut_screw_diameter/2+extra_radius, h=20, center=true, $fn=12);
+			translate([0, 0, tnut_screw_diameter - 1.25*tnut_screw_diameter]){
+				cylinder(r=tnut_screw_diameter/2+10*extra_radius, h=10, $fn=24);
 				translate([0, 5, 5])
-				cube([6, 10, 10], center=true);
+				cube([tnut_screw_diameter+20*extra_radius, 10, 10], center=true);
 			}
-			translate([0, 0, -m3_socket_height]) scale([1, 1, -1])
-			cylinder(r1=m3_wide_radius, r2=7, h=4, $fn=24);
+			translate([0, 0, -1.25*tnut_screw_diameter+3+extra_radius]) scale([1, 1, -1])
+			cylinder(r1=tnut_screw_diameter/2+extra_radius, r2=1.4*tnut_screw_diameter+extra_radius, h=4, $fn=24);
 		}
-		translate([0, -3-m3_socket_height, -2]) rotate([0, 180, 0]){
+
+		//microswitch
+		translate([0, -1.25*tnut_screw_diameter, -2]) rotate([0, 180, 0]){
 			% microswitch();
 			for (x = [-9.5/2, 9.5/2]){
 				translate([x, 0, 0]) rotate([90, 0, 0])

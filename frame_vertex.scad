@@ -49,7 +49,8 @@ union(){
 			translate( [0,-30,0] )
 			rotate([0, 0, 30*lr]) {
 				for (y = [51, 90]) {
-					# translate([lr*11.4, y, 0]) rotate([0, lr*90, 0]) screw_socket();
+					# translate([lr*11.4, y, 0]) rotate([0, lr*90, 0])
+					screw_socket(tnut_screw_diameter, tnut_screw_length);
 				}
 			}
 
