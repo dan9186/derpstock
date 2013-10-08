@@ -94,7 +94,7 @@ module frame_motor() {
 			cube([extrusion+15,8,20], center=true);
 	
 			// Logo for the front side of the object
-			*translate([20,-extrusion/2,0]) rotate([90,-90,30])
+			translate([20,-extrusion/2,0]) rotate([90,-90,30])
 			scale([0.1,0.1,1]) derpstock_logo();
 	
 			% extrusion_cutout( motor_mount_height+20, extra_extrusion_space );
