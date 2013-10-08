@@ -9,22 +9,19 @@ module frame_motor() {
 		// Pad to improve print bed adhesion for slim ends
 		translate( [-37.5, 52.2, -motor_mount_height/2] ) cylinder(r=8, h=0.5);
 		translate( [37.5, 52.2, -motor_mount_height/2] ) cylinder(r=8, h=0.5);
-	
+
 		difference(){
 			// Base vertex shape
 			vertex_outline( 3*extrusion );
 	
 			// Pully cutout
-			difference() {
-				translate([0, 60.5, 0])
-				minkowski() {
-					intersection() {
-						rotate([0, 0, -90])
-						cylinder(r=55, h=3*motor_mount_height+1, center=true, $fn=3);
-						translate([0, -32, 0])
-						cube([100, 16, 3*motor_mount_height+1], center=true);
-					}
-					cylinder(r=6, h=1, center=true);
+			translate([0,extrusion+16.5,0])
+			hull(){
+				for( x=[-1,1]){
+					translate([x*extrusion*0.90,0,0])
+					cylinder( r=6, h=motor_mount_height+1, center=true );
+					translate([x*extrusion*0.44,-16,0])
+					cylinder( r=6, h=motor_mount_height+1, center=true );
 				}
 			}
 	
@@ -40,7 +37,10 @@ module frame_motor() {
 			}
 	
 			// Motor mount cutouts
-			translate([0,46.5,0]) rotate([90,0,0]) nema17();
+			translate([0,46.5,0]) rotate([90,0,0]){
+				nema17_mounts();
+				%nema17();
+			}
 	
 			for(lr=[-1, 1]) {
 				// Side screw cutouts
@@ -92,3 +92,4 @@ module frame_motor() {
 }
 
 frame_motor();
+
