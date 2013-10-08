@@ -1,11 +1,9 @@
 include <../configuration.scad>;
 
-// Determine what fits and then use the changes to apply
-// across the entire set of models via the configuration file.
+// Use this part to help adjust the variables in configuration.scad
+// for fine tuning to your specific printer.
 
-$fn = 30;
-
-extrusion_extra = 5*extra_space;
+$fn = 25;
 
 union(){
 	difference(){
@@ -15,7 +13,7 @@ union(){
 		}
 
 		translate([-extrusion,0,0])
-		extrusion_cutout( extrusion, extrusion_extra );
+		extrusion_cutout( extrusion, extra_extrusion_space );
 
 		translate([-6,extrusion/1.25,thickness/2-5/2*0.2+0.2]) scale([0.1,0.1,0.2])
 		derpstock_logo();

@@ -22,8 +22,6 @@ extra_extrusion_space = 5*extra_space;
 tnut_screw_diameter = 5;
 tnut_screw_length = 12;
 
-// Major diameter of screws
-
 // NEMA17 stepper motors.
 motor_shaft_diameter = 5;
 motor_shaft_radius = motor_shaft_diameter/2 + extra_radius;
