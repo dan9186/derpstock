@@ -62,9 +62,9 @@ union(){
 				for (z = [-1, 1]){
 					hull(){
 						translate([0,2.5,z*(extrusion/4+0.5+4)]) rotate([0, 0, -lr*30])
-						cylinder(r=4, h=extrusion/2+1, center=true, $fn=6);
+						cylinder(r=tnut_width/sqrt(3)+extra_radius, h=extrusion/2+1, center=true, $fn=6);
 						translate([0,-2.5,z*(extrusion/4+0.5+4)]) rotate([0, 0, -lr*30])
-						cylinder(r=4, h=extrusion/2+1, center=true, $fn=6);
+						cylinder(r=tnut_width/sqrt(3)+extra_radius, h=extrusion/2+1, center=true, $fn=6);
 					}
 				}
 			}
