@@ -1,4 +1,4 @@
-include <configuration.scad>;
+include <../configuration.scad>;
 
 module endstop(){
 	difference(){

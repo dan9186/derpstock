@@ -1,4 +1,4 @@
-include <configuration.scad>;
+include <../configuration.scad>;
 
 // Determine what fits and then use the changes to apply
 // across the entire set of models via the configuration file.
