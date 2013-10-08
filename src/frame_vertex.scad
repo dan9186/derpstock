@@ -14,15 +14,14 @@ union(){
 
 		// Idler cutout
 		difference() {
-			translate([0, 60.5, 0])
-			minkowski() {
-				intersection() {
-					rotate([0, 0, -90])
-					cylinder(r=55, h=extrusion, center=true, $fn=3);
-					translate([0, -32, 0])
-					cube([100, 16, 2*extrusion], center=true);
+			translate([0,extrusion+16.5,0])
+			hull(){
+				for( x=[-1,1]){
+					translate([x*extrusion*0.90,0,0])
+					cylinder( r=6, h=extrusion+1, center=true );
+					translate([x*extrusion*0.44,-16,0])
+					cylinder( r=6, h=extrusion+1, center=true );
 				}
-				cylinder(r=6, h=1, center=true);
 			}
 
 			// Idler support cones.
@@ -33,7 +32,7 @@ union(){
 		}
 
 		// Back space cutout
-		translate([0, 60.5, 0]) minkowski() {
+		translate([0,extrusion+2*16.5+7.5, 0]) minkowski() {
 			intersection() {
 				rotate([0, 0, -90])
 				cylinder(r=55, h=extrusion, center=true, $fn=3);

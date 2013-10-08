@@ -26,7 +26,7 @@ module frame_motor() {
 			}
 	
 			// Motor mounting space cutout
-			translate([0, 60.5, 0]) minkowski() {
+			translate([0,extrusion+2*16.5+7.5, 0]) minkowski() {
 					intersection() {
 					rotate([0, 0, -90])
 					cylinder(r=55, h=3*motor_mount_height+1, center=true, $fn=3);
@@ -37,9 +37,9 @@ module frame_motor() {
 			}
 	
 			// Motor mount cutouts
-			translate([0,46.5,0]) rotate([90,0,0]){
+			translate([0,extrusion+26.5,0]) rotate([90,0,0]){
 				nema17_mounts();
-				%nema17();
+				% nema17();
 			}
 	
 			for(lr=[-1, 1]) {
@@ -52,6 +52,13 @@ module frame_motor() {
 							screw_socket(tnut_screw_diameter, tnut_screw_length);
 						}
 					}
+				}
+
+				// Electronics wiring access
+				translate( [0,-30,0] )
+				rotate([0, 0, 30*lr]) {
+					translate([lr*10, 90, 0]) rotate([0, lr*90, lr*45])
+					cube([15,5,20], center=true);
 				}
 	
 				// Nut tunnels
@@ -69,18 +76,22 @@ module frame_motor() {
 								cylinder(r=tnut_width/sqrt(3)+extra_radius, h=extrusion/2+1, center=true, $fn=6);
 							}
 						}
-	
+
 						hull(){
 							translate([0,2.5,0])
 							rotate([0, 0, -lr*30])
-							cylinder(r=4, h=2*motor_mount_height/3, center=true, $fn=6);
+							cylinder(r=tnut_width/sqrt(3)+extra_radius, h=2*motor_mount_height/3, center=true, $fn=6);
 							translate([0,-2.5,0])
 							rotate([0, 0, -lr*30])
-							cylinder(r=4, h=2*motor_mount_height/3, center=true, $fn=6);
+							cylinder(r=tnut_width/sqrt(3)+extra_radius, h=2*motor_mount_height/3, center=true, $fn=6);
 						}
 					}
 				}
 			}
+
+			// Wire access to extrusion
+			translate([0,0,0])
+			cube([extrusion+15,8,20], center=true);
 	
 			// Logo for the front side of the object
 			*translate([20,-extrusion/2,0]) rotate([90,-90,30])
@@ -92,4 +103,4 @@ module frame_motor() {
 }
 
 frame_motor();
-
+	
