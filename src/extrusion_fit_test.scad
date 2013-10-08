@@ -20,13 +20,13 @@ union(){
 		translate([-6,extrusion/1.25,thickness/2-5/2*0.2+0.2]) scale([0.1,0.1,0.2])
 		derpstock_logo();
 
-		for( y=[-1:1] ){
-			translate([0,y*extrusion/2,thickness/2])
-			screw_socket();
+		for( y=[-1,1] ){
+			translate([0,y*extrusion/2,thickness/2-1])
+			screw_socket(tnut_screw_diameter,tnut_screw_length);
 		}
 
 		translate([extrusion*2/3,0,0])
-		for( y=[-1:1] ){
+		for( y=[-1,1] ){
 			translate([0,y*extrusion/2,thickness/2])
 			cylinder(r=m3_nut_radius, h=thickness, center=true, $fn=6);
 		}
@@ -49,7 +49,7 @@ union(){
 			cylinder(r=6, h=2*thickness+1, center=true);
 
 			translate([0,y*extrusion/3,thickness-1])
-			screw_socket();
+			screw_socket(tnut_screw_diameter,tnut_screw_length);
 
 			translate([0,y*extrusion/3,-thickness])
 			cylinder(r=m3_nut_radius, h=thickness, center=true, $fn=6);
