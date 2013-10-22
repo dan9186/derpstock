@@ -134,10 +134,10 @@ module screw_socket(screw_diameter, screw_length) {
 	// length = L
 	union(){
 		// Socket cap
-		cylinder(r=1.5*screw_diameter/2+extra_radius, h=1.25*screw_diameter);
+		cylinder(r=1.5*screw_diameter/2+3*extra_radius, h=1.25*screw_diameter);
 		// Screw shaft
 		translate([0,0,-(screw_length+extra_space)])
-		cylinder(r=screw_diameter/2+extra_radius, h=screw_length+extra_space+1);
+		cylinder(r=screw_diameter/2+3*extra_radius, h=screw_length+extra_space+1);
 	}
 }
 
