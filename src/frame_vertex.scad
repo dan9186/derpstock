@@ -26,9 +26,9 @@ union(){
 
 			// Idler support cones.
 			translate([0, 26+0-30+2.5, 0]) rotate([-90, 0, 0])
-			cylinder(r1=30, r2=m3_wide_radius + 5*extra_radius, h=30-10/2);
+			cylinder(r1=30, r2=7/2 + 5*extra_radius, h=30.5-10/2);
 			translate([0, 26+0+30+2.5, 0]) rotate([90, 0, 0])
-			cylinder(r1=30, r2=m3_wide_radius + 5*extra_radius, h=30-10/2);
+			cylinder(r1=30, r2=7/2 + 5*extra_radius, h=30.5-10/2);
 		}
 
 		// Back space cutout
@@ -47,7 +47,7 @@ union(){
 			// Side screw cutouts
 			translate( [0,-30,0] )
 			rotate([0, 0, 30*lr]) {
-				for (y = [51, 90]) {
+				for (y = [60, 90]) {
 					# translate([lr*11.4, y, 0]) rotate([0, lr*90, 0])
 					screw_socket(tnut_screw_diameter, tnut_screw_length);
 				}
@@ -70,8 +70,8 @@ union(){
 		}
 
 		// Idlear shaft cutout
-		translate( [0,extrusion/2 + 45/2 + 5,0] )
-		rotate( [90,0,0] ) cylinder( r=2, h=45, center=true );
+		#translate( [0,extrusion/2 + 45/2 + 3,0] )
+		rotate( [90,0,0] ) cylinder( r=7/2, h=45, center=true );
 
 		// Bearing for idler
 		% translate([0,32,0]) rotate([90,0,0]) 608ZZ();
