@@ -63,7 +63,7 @@ module frame_motor() {
 	
 				// Nut tunnels
 				rotate([0, 0, 30*lr]) 
-				translate([-16*lr, 111, 0]) {
+				translate([-16.75*lr, 111, 0]) {
 					translate([0, -99.5,0]){
 					// Repeat the same thing for top and bottom
 						for (z = [-1, 1]){
@@ -77,13 +77,14 @@ module frame_motor() {
 							}
 						}
 
+						// Wire access
 						hull(){
 							translate([0,2.5,0])
 							rotate([0, 0, -lr*30])
-							cylinder(r=tnut_width/sqrt(3)+extra_radius, h=2*motor_mount_height/3, center=true, $fn=6);
+							cylinder(r=tnut_width/sqrt(3)+extra_radius, h=0.75*extrusion, center=true, $fn=6);
 							translate([0,-2.5,0])
 							rotate([0, 0, -lr*30])
-							cylinder(r=tnut_width/sqrt(3)+extra_radius, h=2*motor_mount_height/3, center=true, $fn=6);
+							cylinder(r=tnut_width/sqrt(3)+extra_radius, h=0.75*extrusion, center=true, $fn=6);
 						}
 					}
 				}
@@ -91,7 +92,7 @@ module frame_motor() {
 
 			// Wire access to extrusion
 			translate([0,0,0])
-			cube([extrusion+15,8,20], center=true);
+			cube([extrusion+15,8,0.75*extrusion], center=true);
 	
 			// Logo for the front side of the object
 			translate([20,-extrusion/2,0]) rotate([90,-90,30])
