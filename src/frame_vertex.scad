@@ -55,7 +55,7 @@ union(){
 
 			// Nut tunnels
 			rotate([0, 0, 30*lr]) 
-			translate([-16*lr, 111, 0]) {
+			translate([-16.75*lr, 111, 0]) {
 				translate([0, -99.5,0])
 				// Repeat the same thing for top and bottom
 				for (z = [-1, 1]){
@@ -72,6 +72,8 @@ union(){
 		// Idlear shaft cutout
 		#translate( [0,extrusion/2 + 45/2 + 3,0] )
 		rotate( [90,0,0] ) cylinder( r=7/2, h=45, center=true );
+		#translate( [0,extrusion/2 + 35,0] )
+		rotate( [90,0,0] ) cylinder( r=4, h=30, center=true );
 
 		// Bearing for idler
 		% translate([0,32,0]) rotate([90,0,0]) 608ZZ();
