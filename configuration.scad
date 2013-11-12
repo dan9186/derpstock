@@ -62,6 +62,11 @@ extrusion = 20;
 sticky_width = 25.4;
 sticky_length = 25.4;
 
+// Wheel variables for carriage
+wheel_separation = 2*21.5;
+
+// Belt variables
+belt_width = 5;
 
 //******* Universal Objects *******//
 
