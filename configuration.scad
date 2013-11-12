@@ -187,18 +187,18 @@ module vertex_outline( height ){
 				rotate( [90,0,0] ){
 					# translate([0,z*(height/2-extrusion/2),extrusion/2+extra_space+tnut_screw_diameter])
 					screw_socket(tnut_screw_diameter,tnut_screw_length);
-					translate([0,z*(height/2-extrusion/2),extrusion/2+extra_extrusion_space/2-2])
-					cylinder(r1=7, r2=4, h=4, center=true);
 				}
+				translate([0,-(extrusion/2-extrusion/6+2.5*extra_space),0])
+				cube([extrusion/3,extrusion/3,height+1], center=true);
 			}
 		}else{
 			rotate( [90,0,0] ){
 				// Socket Screw
 				# translate([0,0,extrusion/2+extra_space+tnut_screw_diameter])
 				screw_socket(tnut_screw_diameter,tnut_screw_length);
-				translate([0,0,extrusion/2+extra_extrusion_space/2-2])
-				cylinder(r1=7, r2=4, h=4, center=true);
 			}
+			translate([0,-(extrusion/2-extrusion/6+2.5*extra_space),0])
+			cube([extrusion/3,extrusion/3,height+1], center=true);
 		}
 	}
 }
