@@ -15,7 +15,7 @@ module vslot_carriage(){
 			translate([0,0, 1.5*thickness/2])
 			cube([carriage_width,carriage_height,1.75*thickness], center=true);
 
-			// Ball joint mount horns.
+			// Ball joint mount horns
 			for(lr=[-1,1]){
 				scale([lr,1,1]) intersection() {
 					translate([0,carriage_height/2-18/2,1.5*belt_width/2+1.75*thickness/2])
@@ -25,8 +25,7 @@ module vslot_carriage(){
 				}
 			}
 
-			/*horn_thickness = 13;
-			horn_x = 8;
+			/*
 			// Belt clamps.
 			difference() {
 				union() {
@@ -45,6 +44,17 @@ module vslot_carriage(){
 			}*/
 		}
 
+		for(lr=[-1,1]){
+			// Screw holes for arms
+			translate([lr*(carriage_width/2-12/2+15),carriage_height/2-18/2,(1.75*thickness+2*belt_width)/2])
+			rotate([0,lr*90,0])
+			#screw_socket( 3, 20 );
+
+			translate([lr*(carriage_width/2-9),carriage_height/2-18/2,(1.75*thickness+2*belt_width)/2])
+			rotate([0,lr*90,0])
+			cylinder( r=m3_nut_radius, h=12, $fn=6, center=true );
+		}
+
 		// Shift wheel screws out of the arm mount
 		translate([0,-7,0]){
 			// Wheel screws
@@ -55,7 +65,7 @@ module vslot_carriage(){
 				translate([wheel_separation/2,tb*20,1.25*5])
 				screw_socket(5,20);
 			}
-	}
+		}
 	}
 }
 
