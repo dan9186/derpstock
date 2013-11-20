@@ -163,8 +163,8 @@ module vertex_outline( height ){
 	difference(){
 		union(){
 			// Builds the rounded front of the vertex
-			intersection() {
-				translate([0, 36 - extrusion/2 - 6.5, 0])
+			intersection(){
+				translate([0, 34 - extrusion/2 - 6.5, 0])
 				cylinder(r=36, h=height, center=true, $fn=60);
 				translate([0, -(50-5.5-extrusion/2), 0]) rotate([0, 0, 30])
 				cylinder(r=50, h=height+1, center=true, $fn=6);
@@ -190,7 +190,7 @@ module vertex_outline( height ){
 		if( height >= extrusion+1.5*tnut_screw_diameter+20*extra_space ){
 			for( z=[-1,1] ){
 				rotate( [90,0,0] ){
-					# translate([0,z*(height/2-extrusion/2),extrusion/2+extra_space+tnut_screw_diameter])
+					# translate([0,z*(height/2-extrusion/2),extrusion/2+15*extra_space+tnut_screw_diameter])
 					screw_socket(tnut_screw_diameter,tnut_screw_length);
 				}
 				translate([0,-(extrusion/2-extrusion/6+2.5*extra_space),0])
@@ -199,7 +199,7 @@ module vertex_outline( height ){
 		}else{
 			rotate( [90,0,0] ){
 				// Socket Screw
-				# translate([0,0,extrusion/2+extra_space+tnut_screw_diameter])
+				# translate([0,0,extrusion/2+15*extra_space+tnut_screw_diameter])
 				screw_socket(tnut_screw_diameter,tnut_screw_length);
 			}
 			translate([0,-(extrusion/2-extrusion/6+2.5*extra_space),0])
