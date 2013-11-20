@@ -55,7 +55,7 @@ union(){
 
 			// Nut tunnels
 			rotate([0, 0, 30*lr]) 
-			translate([-16.75*lr, 111, 0]) {
+			translate([-17.5*lr, 111, 0]) {
 				translate([0, -99.5,0])
 				// Repeat the same thing for top and bottom
 				for (z = [-1, 1]){
