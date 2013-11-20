@@ -25,23 +25,28 @@ module vslot_carriage(){
 				}
 			}
 
-			/*
-			// Belt clamps.
-			difference() {
-				union() {
-					translate([6.5, -2.5, horn_thickness/2+1])
-					cube([14, 7, horn_thickness-2], center=true);
-					translate([10.75, 2.5, horn_thickness/2+1])
-					cube([5.5, 16, horn_thickness-2], center=true);
-				}
-				// Avoid touching diagonal push rods (carbon tube).
-				translate([20, -10, 12.5]) rotate([35, 35, 30])
-				cube([40, 40, 20], center=true);
+			// Belts
+			for(lr=[-1,1]){
+				translate([lr*22.1/2,0,1.75*thickness/2+1.5*thickness/2+belt_width/2+1])
+				%cube([2,150,belt_width], center=true); 
 			}
-			for (y = [-12, 7]) {
-				translate([1.25, y, horn_thickness/2+1])
-				cube([7, 8, horn_thickness-2], center=true);
-			}*/
+
+			// Belt Clamps
+			for(y=[-1,1]){
+				translate([extrusion*1/3-4,y*(carriage_height/8+2),1.75*thickness/2+1.5*thickness/2+1.5*belt_width/2])
+				cube([extrusion*2/3,carriage_height/8,1.5*belt_width], center=true);
+			}
+			translate([extrusion*2/3-2,0,1.75*thickness/2+1.5*thickness/2+1.5*belt_width/2])
+			minkowski(){
+				cylinder(r=0.5, h=1, center=true);
+				hull(){
+					translate([-(carriage_height/8-1)/2,0,0])
+					rotate([0,0,180])
+					cylinder(r=(carriage_height/8-1)/2, h=1.5*belt_width, center=true, $fn=3);
+					translate([(extrusion*2/3-carriage_height/16)/2-1,0,0])
+					cube([extrusion*2/3-carriage_height/16,carriage_height/8-2.15,1.5*belt_width], center=true);
+				}
+			}
 		}
 
 		for(lr=[-1,1]){
@@ -69,4 +74,4 @@ module vslot_carriage(){
 	}
 }
 
-vslot_carriage();
+vslot_carriage();	
