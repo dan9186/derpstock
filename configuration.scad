@@ -130,7 +130,7 @@ module nema17_mounts(){
 	cylinder(r=11+10*extra_radius, h=20, center=true, $fn=60);
 	for (a = [0:90:359]) {
 		rotate([0, 0, a]) translate([15.5, 15.5, 0])
-		cylinder(r=motor_screw_diameter/2 + extra_radius, h=20, center=true, $fn=12);
+		cylinder(r=motor_screw_diameter/2 + extra_radius * 4, h=20, center=true, $fn=12);
 	}
 }
 
