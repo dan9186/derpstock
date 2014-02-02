@@ -47,3 +47,6 @@
 
 * M5 12mm (currently unless we countersink) low profile (openbuilds)
 
+## Assembling Triangles
+
+* 2 assemblies (bar, vertex, bar) & (vertex, bar, vertex)
