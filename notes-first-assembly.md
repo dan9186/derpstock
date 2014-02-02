@@ -20,3 +20,4 @@
 * M8 screw cuts threads well for the first portion, and well enough for the second. 
 * M5 14mm work for the vertical vslot anchors
 * Vslot cutouts almost perfect, self cleaning
+* Order of operations: Crossbeam tslot installation before M8 idler pulley installation.
