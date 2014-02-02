@@ -50,3 +50,14 @@
 ## Assembling Triangles
 
 * 2 assemblies (bar, vertex, bar) & (vertex, bar, vertex)
+* 
+
+## Assembling uprights
+
+* All vertical bars need to be flush with the bottom surface
+* 
+
+## Vertical bar considerations
+
+* 750mm seems to be the sweet spot
+* 1m has wobble
