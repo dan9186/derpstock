@@ -21,3 +21,12 @@
 * M5 14mm work for the vertical vslot anchors
 * Vslot cutouts almost perfect, self cleaning
 * Order of operations: Crossbeam tslot installation before M8 idler pulley installation.
+
+
+## Crossbeam lengths
+
+### Mounting Plate 3 Points of Contact
+
+* Crossbeam lengths (214mm*2)=428mm crossbeams (212-213mm)
+* :. Vertical beam = 644mm (~425-500mm Z height)
+* One 1500mm Vslot length will yield ((2*428mm)+644mm)
