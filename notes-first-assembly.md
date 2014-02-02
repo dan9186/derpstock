@@ -45,5 +45,5 @@
 * 
 ## Bed mounting 
 
-* M5 12mm (currently unless we countersink)
+* M5 12mm (currently unless we countersink) low profile (openbuilds)
 
