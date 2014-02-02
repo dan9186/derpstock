@@ -4,7 +4,7 @@
 * Ball-end Metric Hex key set
 * Rubber mallet (optional)
 * M5 drill bit (optional)
-* 
+* ~1/2" binder clips (3 or 6) to mount bed.
 
 ##Part Notes
 
@@ -36,3 +36,14 @@
 
 * Cut slowly, less cleanup
 * When assembling vertices, assemble snug, loosen afterthings are together, square up then tighten.
+* 
+
+## Working cuts
+
+* Misuimi 428mm (9 cross bars)
+* Vslot 1M (3 vertical bars)
+* 
+## Bed mounting 
+
+* M5 12mm (currently unless we countersink)
+
