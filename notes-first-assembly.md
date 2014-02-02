@@ -30,3 +30,9 @@
 * Crossbeam lengths (214mm*2)=428mm crossbeams (212-213mm)
 * :. Vertical beam = 644mm (~425-500mm Z height)
 * One 1500mm Vslot length will yield ((2*428mm)+644mm)
+
+
+## Assembly
+
+* Cut slowly, less cleanup
+* When assembling vertices, assemble snug, loosen afterthings are together, square up then tighten.
