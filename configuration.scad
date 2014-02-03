@@ -15,8 +15,7 @@ include <src/includes/Orbitron_Medium.scad>;
 // Increase to add extra space to holes.
 extra_radius = 0.1;
 extra_space = 0.1;
-// 4.5 - 5 for virtually no side to side play //
-extra_extrusion_space = 5*extra_space;
+extra_extrusion_space = 6*extra_space;
 
 // The diameter and length of the screws needed for the tnuts
 tnut_screw_diameter = 5;
