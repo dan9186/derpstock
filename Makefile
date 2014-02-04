@@ -1,8 +1,5 @@
-# OS X installed with ports
-SCADPATH = /Applications/MacPorts/OpenSCAD.app/Contents/MacOS/OpenSCAD
-
-# OS X downloaded
-#SCADPATH = /Applications/MacPorts/OpenSCAD.app/Contents/MacOS/OpenSCAD
+# OS X
+SCADPATH = /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD
 
 # *nix installed in path
 #SCADPATH = openscad
