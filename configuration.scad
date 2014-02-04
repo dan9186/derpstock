@@ -87,6 +87,27 @@ module 608ZZ(){
 	}
 }
 
+// Flanged 608ZZ bearing
+module F608ZZ(){
+	difference(){
+		union(){
+		cylinder( r=22.1/2, h=7.05 );
+		cylinder( r=(22.1+3)/2, h=1-0.1 );
+		}
+		translate( [0,0,-0.25] ) cylinder( r=8/2, h=7.5 );
+		translate([0,0,6.05])
+		difference(){
+			cylinder( r=8/2+5.5, h=1.5 );
+			translate( [0,0,-.25] ) cylinder( r=4+1.6, h=2 );
+		}
+		translate([0,0,-.5])
+		difference(){
+			cylinder( r=8/2+5.5, h=1.5 );
+			translate( [0,0,-.25] ) cylinder( r=4+1.6, h=2 );
+		}	
+	}
+}
+
 // Basic microswitch
 module microswitch() {
 	difference() {
