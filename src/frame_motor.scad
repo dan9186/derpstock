@@ -41,6 +41,14 @@ module frame_motor() {
 				nema17_mounts();
 				% nema17();
 			}
+
+			// Motor screw access tunnels
+			for ( z = [-1, 1] ){
+				for ( lr = [-1, 1] ){
+					translate([lr*16,20.25+30-extrusion/2,z*15.5]) rotate([90,0,lr*30])
+					cylinder(r=3*1.5/2+extra_radius*4, h=30, $fn=12);
+				}
+			}
 	
 			for(lr=[-1, 1]) {
 				// Side screw cutouts
@@ -104,4 +112,3 @@ module frame_motor() {
 }
 
 frame_motor();
-	
