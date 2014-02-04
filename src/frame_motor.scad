@@ -68,12 +68,12 @@ module frame_motor() {
 					// Repeat the same thing for top and bottom
 						for (z = [-1, 1]){
 							hull(){
-								translate([0,2.5,z*(motor_mount_height/2-0.5)])
+								translate([0,5.5,z*(motor_mount_height/2-0.5)])
 								rotate([0, 0, -lr*30])
-								cylinder(r=tnut_width/sqrt(3)+2*extra_radius, h=extrusion/2+1, center=true, $fn=6);
-								translate([0,-2.5,z*(motor_mount_height/2-0.5)])
+								cylinder(r=tnut_width/sqrt(3)+3*extra_radius, h=extrusion/2+1, center=true, $fn=6);
+								translate([0,-5.5,z*(motor_mount_height/2-0.5)])
 								rotate([0, 0, -lr*30])
-								cylinder(r=tnut_width/sqrt(3)+2*extra_radius, h=extrusion/2+1, center=true, $fn=6);
+								cylinder(r=tnut_width/sqrt(3)+3*extra_radius, h=extrusion/2+1, center=true, $fn=6);
 							}
 						}
 
