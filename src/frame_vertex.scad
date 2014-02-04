@@ -26,9 +26,9 @@ union(){
 
 			// Idler support cones.
 			translate([0, 26+0-30+2.5, 0]) rotate([-90, 0, 0])
-			cylinder(r1=30, r2=7/2 + 5*extra_radius, h=30.5-10/2);
+			cylinder(r1=30, r2=7/2 + 5*extra_radius, h=30.5-8.5/2);
 			translate([0, 26+0+30+2.5, 0]) rotate([90, 0, 0])
-			cylinder(r1=30, r2=7/2 + 5*extra_radius, h=30.5-10/2);
+			cylinder(r1=30, r2=7/2 + 5*extra_radius, h=30.5-8.5/2);
 		}
 
 		// Back space cutout
