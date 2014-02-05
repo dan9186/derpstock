@@ -13,7 +13,7 @@
 * M3 screw holes need to have enough clearance to drop through
 * M5 14mm work for the vertical vslot anchors
 * M5 10mm crossbeam vslot NO WASHERS
-* M5 10mm crossbeam vslot WITH WASHERS
+* M5 12mm crossbeam vslot WITH WASHERS
 * Vslot cutouts almost perfect, self cleaning
 
 ###frame_vertex
