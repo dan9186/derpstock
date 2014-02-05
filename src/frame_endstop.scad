@@ -1,5 +1,7 @@
 include <../configuration.scad>;
 
+heat_screw_insert = 3;
+
 module endstop(){
 	difference(){
 		// Outside cube shape
@@ -34,4 +36,15 @@ module endstop(){
 	}
 }
 
-translate([0, 0, extrusion/2]) endstop();
+difference(){
+	translate([0,-(extrusion+extra_extrusion_space)/2-thickness-3,5])
+	cube([extrusion+2*thickness,6+2*thickness,10], center=true);
+
+	translate([-10,-(extrusion+extra_extrusion_space)/2-6-thickness-extra_space,-1])
+	cube([20,6+2*extra_space,12]);
+}
+
+%extrusion_cutout(40, extra_extrusion_space);
+
+%translate([0,-(extrusion+extra_extrusion_space)/2-3-thickness,0])
+microswitch();
