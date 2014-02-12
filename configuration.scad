@@ -28,6 +28,14 @@ tnut_length = 15;
 // Arm parameters
 arm_screw_diameter = 4;
 
+// Powersupply Settings 
+power_supply_width = 122;
+power_supply_height = 56;
+power_supply_length = 221;
+power_supply_screw_diameter = 4;
+power_supply_screw_separation = 25;
+power_supply_mount_hole_inset = 33;
+
 // NEMA17 stepper motors.
 motor_shaft_diameter = 5;
 motor_shaft_radius = motor_shaft_diameter/2 + extra_radius;

@@ -2,52 +2,35 @@ include <../configuration.scad>;
  
 $fn = 24;
  
-power_supply_width = 122;
-power_supply_height = 56;
-power_supply_length = 221;
- 
-//Part Settings
-partLength = 60;
-width = 15;
-thickness = 7;
-
- 
-//Aluminum Extrusion Settings
-holeSpacing = 40;
- 
-//Powersupply Settings
-power_supply_screw_diameter = 4;
-power_supply_screw_separation = 25;
-power_supply_hole_shift = 0;
-power_supply_extrusion_holes_shift = 45;
- 
 module frame_powersupply_bracket(){
-        difference(){
-                union(){
-                        translate([0,0,thickness/2]) cube(size=[width,partLength,thickness], center = true);
-                        translate([(power_supply_extrusion_holes_shift+(width/2))/2,0,thickness/2])
-                        cube([power_supply_extrusion_holes_shift+(width/2),partLength,thickness], center = true);
-                }
+	bracket_thickness = 1.25*power_supply_screw_diameter + 2;
+	difference(){
+		minkowski(){
+			translate([0,0,bracket_thickness/2-0.5]){
+				union(){
+					translate([20+power_supply_mount_hole_inset/3*2,0,0])
+					cube([20+power_supply_mount_hole_inset/3,3*extrusion-5/2,bracket_thickness-1], center = true);
+					translate([power_supply_mount_hole_inset/3,0,0])
+					cube([power_supply_mount_hole_inset,power_supply_screw_separation+2*power_supply_screw_diameter,bracket_thickness-1], center=true);
+				}
+			}
+			cylinder(r=5, h=1);
+		}
  
-                //Powersupply mounting holes
-                #translate([0,power_supply_hole_shift+power_supply_screw_separation/2,thickness-50*extra_space])
-                screw_socket( power_supply_screw_diameter, thickness+5 );
- 
-                #translate([0,power_supply_hole_shift-power_supply_screw_separation/2,thickness-50*extra_space])
-                screw_socket( power_supply_screw_diameter, thickness+5 );
+		for( tb=[-1,1] ){
+			//Powersupply mounting holes
+			translate([0,tb*power_supply_screw_separation/2,2])
+			screw_socket( power_supply_screw_diameter, bracket_thickness+5 );
        
-                //mounting holes for extrusion
-                #rotate([180,0,0])
-                translate([power_supply_extrusion_holes_shift,-holeSpacing/2-tnut_screw_diameter/2,-extra_space])
-                screw_socket(tnut_screw_diameter, tnut_screw_length);
- 
-                #rotate([180,0,0])
-                translate([power_supply_extrusion_holes_shift,holeSpacing/2,-extra_space])
-                screw_socket(tnut_screw_diameter, tnut_screw_length);
-        }
+			// Extrusion mounting holes
+			rotate([180,0,0])
+			translate([power_supply_mount_hole_inset+3*power_supply_screw_diameter/2+20/2,tb*extrusion,-3*extra_space])
+			#screw_socket(tnut_screw_diameter, tnut_screw_length);
+		}
+	}
 }
  
 frame_powersupply_bracket();
  
-%translate([-power_supply_length/3,0,-power_supply_width/2])
+%translate([-power_supply_length/2+power_supply_mount_hole_inset,0,-power_supply_width/2])
 cube([power_supply_length,power_supply_height,power_supply_width], center=true);
