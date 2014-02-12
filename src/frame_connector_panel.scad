@@ -24,7 +24,7 @@ module frame_connector_panel(){
 			cube([30,21.5,plate_thickness+2], center=true);
 			for( lr=[-1,1] ){
 				translate([lr*20,0,2])
-				screw_socket( 3, 20 );
+				screw_socket( 3-2*extra_radius, 20 );
 			}
 		}
 
