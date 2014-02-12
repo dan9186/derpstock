@@ -3,7 +3,7 @@ include <../configuration.scad>;
 $fn = 24;
 
 module ramps_mount(){
-	arduino_screw = 3/2+3*extra_radius;
+	arduino_screw = 3/2;
 	support_radius = arduino_screw+2;
 	support_height = 2/5*extrusion;
 	difference() {
@@ -31,7 +31,7 @@ module ramps_mount(){
 
 			// Extrusion Plate
 			minkowski(){
-				translate([-extrusion,-19,3-extra_space]) cube([2*extrusion+81.5,thickness,extrusion+2*extra_space-6]);
+				translate([-extrusion-7.5,-19,3-extra_space]) cube([2*extrusion+81.5+7.5,thickness,extrusion+2*extra_space-6]);
 				rotate([90,0,0])cylinder(r=3, h=1);
 			}
 		}
@@ -43,7 +43,7 @@ module ramps_mount(){
 		translate([75,48,1]) cylinder(r=arduino_screw,h=support_height);
 
 		// Extrusion Mounting Holes
-		rotate([-90,0,0]) translate([-extrusion/2,-extrusion/2,-19+thickness-thickness/10])
+		rotate([-90,0,0]) translate([-extrusion/2-7.5,-extrusion/2,-19+thickness-thickness/10])
 		screw_socket( 5, 10 );
 		rotate([-90,0,0]) translate([81.5+extrusion/2,-extrusion/2,-19+thickness-thickness/10])
 		screw_socket( 5, 10 );
