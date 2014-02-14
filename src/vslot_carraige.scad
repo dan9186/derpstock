@@ -65,19 +65,18 @@ module vslot_carriage(){
 }
 
 module belt_clamp(){
-	#minkowski(){
+	translate([0.5,0,(1.5*belt_width+1)/2])
+	minkowski(){
 		cylinder(r=0.5, h=1, center=true);
 		hull(){
-			*translate([-(thickness/8-1)/2,0,0])
+			translate([extrusion/3,0,0])
 			rotate([0,0,180])
-			cylinder(r=(thickness/8-1)/2, h=1.5*belt_width, center=true, $fn=3);
-			*translate([(extrusion*2/3-thickness/16)/2-1,0,0])
-			cube([extrusion*2/3-thickness/16,thickness/8-2.15,1.5*belt_width], center=true);
+			cylinder(r=extrusion/3, h=1.5*belt_width, center=true, $fn=3);
+			translate([extrusion/3+sin(30)*extrusion/3+extrusion/3/2,0,0])
+			cube([extrusion/3,cos(30)*extrusion/3*2.15,1.5*belt_width], center=true);
 		}
 	}
 }
-
-belt_clamp();
 
 module new_vslot_carriage(){
 	r1 = wheel_separation+15;
@@ -88,6 +87,15 @@ module new_vslot_carriage(){
 		rotate([0,0,180])
 		cylinder(r=r1, thickness, $fn=3 );
 		cylinder(r=(r1-sqrt(pow(25,2)-pow(25/2,2)))/sin(30), thickness, $fn=3 );
+	}
+
+	translate([extrusion/5,0,thickness])
+	belt_clamp();
+
+	for(tb=[-1,1]){
+		rotate([0,0,180])
+		translate([-2*extrusion/3,tb*(extrusion/3+belt_width),thickness])
+		belt_clamp();
 	}
 }
 
@@ -112,4 +120,4 @@ for(lr=[-1,1]){
 
 *vslot_carriage();
 
-*new_vslot_carriage();
+new_vslot_carriage();
