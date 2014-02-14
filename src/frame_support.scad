@@ -97,11 +97,11 @@ module frame_support(){
 
 		translate([5.5*screw_plate_width,-extrusion/2-5/2,support_thickness])
 		rotate([30,0,0])
-		cylinder(r=5*1.5/2+10*extra_radius, h=40, center=true);
+		cylinder(r=5*1.5/2+10*extra_radius, h=42, center=true);
 
 		translate([4*screw_plate_width,-extrusion/2-5/2,support_thickness])
 		rotate([30,0,0])
-		cylinder(r=5*1.5/2+10*extra_radius, h=40, center=true);
+		cylinder(r=5*1.5/2+10*extra_radius, h=42, center=true);
 	}
 }
 
