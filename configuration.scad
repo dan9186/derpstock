@@ -71,6 +71,8 @@ sticky_length = 25.4;
 
 // Wheel variables for carriage
 wheel_separation = 2*21.5;
+wheel_diameter=24.39;
+wheel_thickness=10.23;
 
 // Belt variables
 belt_width = 5;
@@ -234,6 +236,13 @@ module vertex_outline( height ){
 			cube([extrusion/3,extrusion/3,height+1], center=true);
 		}
 	}
+}
+
+module vwheel(){
+	rotate([180,0,0])
+	translate([0,0,wheel_thickness/2])
+	screw_socket(5,25);
+	cylinder(r=wheel_diameter/2, h=wheel_thickness, center=true);
 }
 
 module derpstock_logo(){

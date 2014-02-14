@@ -3,10 +3,6 @@ include <../configuration.scad>
 $fn = 24;
 
 module vslot_carriage(){
-	//Extrusion for show
-	%translate([0,0,-extrusion/2-3])
-	cube([extrusion, 100, extrusion], center=true);
-
 	carriage_width=wheel_separation+15;
 	carriage_height=2.2*extrusion+33;
 	difference(){
@@ -25,19 +21,13 @@ module vslot_carriage(){
 				}
 			}
 
-			// Belts
-			for(lr=[-1,1]){
-				translate([lr*22.1/2,0,1.75*thickness/2+1.5*thickness/2+belt_width/2+1])
-				%cube([2,150,belt_width], center=true); 
-			}
-
 			// Belt Clamps
 			for(y=[-1,1]){
 				translate([extrusion*1/3-4,y*(carriage_height/8+2),1.75*thickness/2+1.5*thickness/2+1.5*belt_width/2])
 				cube([extrusion*2/3,carriage_height/8,1.5*belt_width], center=true);
 			}
 			translate([extrusion*2/3-2,0,1.75*thickness/2+1.5*thickness/2+1.5*belt_width/2])
-			minkowski(){
+			#minkowski(){
 				cylinder(r=0.5, h=1, center=true);
 				hull(){
 					translate([-(carriage_height/8-1)/2,0,0])
@@ -74,4 +64,52 @@ module vslot_carriage(){
 	}
 }
 
-vslot_carriage();	
+module belt_clamp(){
+	#minkowski(){
+		cylinder(r=0.5, h=1, center=true);
+		hull(){
+			*translate([-(thickness/8-1)/2,0,0])
+			rotate([0,0,180])
+			cylinder(r=(thickness/8-1)/2, h=1.5*belt_width, center=true, $fn=3);
+			*translate([(extrusion*2/3-thickness/16)/2-1,0,0])
+			cube([extrusion*2/3-thickness/16,thickness/8-2.15,1.5*belt_width], center=true);
+		}
+	}
+}
+
+belt_clamp();
+
+module new_vslot_carriage(){
+	r1 = wheel_separation+15;
+	midpoint = (r1-sqrt(pow(25,2)-pow(25/2,2))+r1*sin(30))/2;
+
+	translate([r1-sqrt(pow(25,2)-pow(25/2,2))-midpoint,0,0])
+	intersection(){
+		rotate([0,0,180])
+		cylinder(r=r1, thickness, $fn=3 );
+		cylinder(r=(r1-sqrt(pow(25,2)-pow(25/2,2)))/sin(30), thickness, $fn=3 );
+	}
+}
+
+// VWheels
+translate([-24.39+3,0,-3-extrusion/2])
+%vwheel();
+
+for(tb=[-1,1]){
+	translate([24.39-3,tb*(24.39-3),-3-extrusion/2])
+	%vwheel();
+}
+
+//Extrusion for show
+%translate([0,0,-extrusion/2-3])
+cube([extrusion, 100, extrusion], center=true);
+
+// Belts
+for(lr=[-1,1]){
+	translate([lr*22.1/2,0,1.75*thickness/2+1.5*thickness/2+belt_width/2+1])
+	%cube([2,150,belt_width], center=true); 
+}
+
+*vslot_carriage();
+
+*new_vslot_carriage();
