@@ -79,7 +79,7 @@ module belt_clamp(){
 }
 
 module new_vslot_carriage(){
-	r1 = wheel_separation+15;
+	r1 = wheel_separation+20;
 	midpoint = (r1-sqrt(pow(25,2)-pow(25/2,2))+r1*sin(30))/2;
 
 	translate([r1-sqrt(pow(25,2)-pow(25/2,2))-midpoint,0,0])
@@ -94,9 +94,18 @@ module new_vslot_carriage(){
 
 	for(tb=[-1,1]){
 		rotate([0,0,180])
-		translate([-2*extrusion/3,tb*(extrusion/3+belt_width),thickness])
+		translate([-2*extrusion/3,tb*(extrusion/3*1.25+belt_width),thickness])
 		belt_clamp();
 	}
+
+*	for(lr=[-1,1]){
+		translate([lr*extrusion,cos(30)*extrusion/3*2.15-1,10/2+thickness])
+		cube([10,10,2*belt_width+10], center=true);
+	}
+
+	rotate([90,0,0])
+	translate([0,thickness,0])
+	cylinder(r=(wheel_separation+25)/2, h=10, center=true, $fn=8);
 }
 
 // VWheels
