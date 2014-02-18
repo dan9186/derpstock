@@ -44,12 +44,20 @@ module frame_support(){
 			}
 		}
 
+		// Round corner to help visibility
+		translate([0,0,-extrusion/4+5*extra_space])
+		difference(){
+			cube([screw_plate_width*4+offset_from_corner,30,30]);
+			rotate([0,90,0])
+			cylinder(r=extrusion/2, h=screw_plate_width*4+offset_from_corner+5);
+		}
+
 		// Cutout to ensure flat against horizontal beam
 		translate([-screw_plate_width/2,-screw_plate_width*3-offset_from_corner,-support_thickness])
 		cube([screw_plate_width, 4*screw_plate_width, support_thickness]);
 
 		// Cutout for vertical support flat side
-		translate([offset_from_corner-1,0,-5*support_thickness-20])
+		translate([offset_from_corner-1,0,-5*support_thickness-21.5])
 		rotate([30,0,0])
 		cube([screw_plate_width*4, screw_plate_width*2, support_thickness*5]);
 
@@ -104,6 +112,8 @@ module frame_support(){
 		cylinder(r=5*1.5/2+10*extra_radius, h=42, center=true);
 	}
 }
+
+
 
 rotate([180,0,0])
 frame_support();
