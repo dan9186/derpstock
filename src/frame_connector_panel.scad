@@ -32,7 +32,14 @@ module frame_connector_panel(){
 
 		// IEC Plug
 		translate([-37,0,0]){
-			cube([30,21.5,plate_thickness+2], center=true);
+			difference(){
+				cube([30,21.5,plate_thickness+2], center=true);
+				for(lr=[-1,1]){
+					translate([lr*17,21.5/2,0])
+					rotate([0,0,-lr*26.5])
+					cube([25,10,plate_thickness+2], center=true);
+				}
+			}
 			for( lr=[-1,1] ){
 				translate([lr*20,0,2])
 				screw_socket( 3-2*extra_radius, 20 );
