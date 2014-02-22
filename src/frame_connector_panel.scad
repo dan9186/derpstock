@@ -3,19 +3,29 @@ include <../configuration.scad>;
 $fn = 24;
 
 module frame_connector_panel(){
-	plate_thickness = 6.5;
+	plate_thickness = thickness;
+	screw_support = 6.5;
 	plate_width = 130;
 	difference(){
 		// Base plate
-		minkowski(){
-			cube([plate_width,3*extrusion-5*2, plate_thickness - 1], center=true);
-			cylinder(r=5, h=1, center=true);
+		union(){
+			minkowski(){
+				cube([plate_width,3*extrusion-5*2, plate_thickness - 1.75], center=true);
+				cylinder(r=5, h=1, center=true);
+			}
+
+			for( tb=[-1,1] ){
+				for( lr=[-1,1] ){
+					translate([lr*(plate_width/2-extrusion/2),tb*extrusion,plate_thickness/2])
+					cylinder(r=5+1, h=screw_support, center=true);
+				}
+			}
 		}
 
 		// Extrusion Tnut holes
 		for( tb=[-1,1] ){
 			for( lr=[-1,1] ){
-				translate([lr*(plate_width/2-extrusion/2),tb*extrusion,plate_thickness/2-5*extra_space])
+				translate([lr*(plate_width/2-extrusion/2),tb*extrusion,screw_support/2])
 				screw_socket(5, 20);
 			}
 		}
