@@ -103,9 +103,26 @@ module new_vslot_carriage(){
 		cube([10,10,2*belt_width+10], center=true);
 	}
 
-	rotate([90,0,0])
-	translate([0,thickness,0])
-	cylinder(r=(wheel_separation+25)/2, h=10, center=true, $fn=8);
+	difference(){
+		intersection(){
+			rotate([90,0,0])
+			translate([0,thickness-1,0])
+			cylinder(r=(wheel_separation+28)/2, h=10, center=true, $fn=8);
+
+			translate([0,0,25/2+thickness])
+			cube([wheel_separation+28,10,25],center=true);
+		}
+
+		scale([0.8,1,0.8])
+		intersection(){
+			rotate([90,0,0])
+			translate([0,thickness-1,0])
+			cylinder(r=(wheel_separation+28)/2, h=15, center=true, $fn=8);
+
+			translate([0,0,25/2+thickness])
+			cube([wheel_separation+25,15,25],center=true);
+		}
+	}
 }
 
 // VWheels
