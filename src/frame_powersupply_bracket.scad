@@ -9,9 +9,9 @@ module frame_powersupply_bracket(){
 			translate([0,0,bracket_thickness/2-0.5]){
 				union(){
 					translate([20+power_supply_mount_hole_inset/3*2,0,0])
-					cube([20+power_supply_mount_hole_inset/3,3*extrusion-5/2,bracket_thickness-1], center = true);
+					cube([20+power_supply_mount_hole_inset/3,3*extrusion-5*2,bracket_thickness-1*2], center = true);
 					translate([power_supply_mount_hole_inset/3,0,0])
-					cube([power_supply_mount_hole_inset,power_supply_screw_separation+2*power_supply_screw_diameter,bracket_thickness-1], center=true);
+					cube([power_supply_mount_hole_inset,power_supply_screw_separation+2*power_supply_screw_diameter-5,bracket_thickness-1*2], center=true);
 				}
 			}
 			cylinder(r=5, h=1);
