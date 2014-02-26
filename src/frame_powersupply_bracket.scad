@@ -27,6 +27,10 @@ module frame_powersupply_bracket(){
 			translate([power_supply_mount_hole_inset+3*power_supply_screw_diameter/2+20/2,tb*extrusion,-3*extra_space])
 			#screw_socket(tnut_screw_diameter, tnut_screw_length);
 		}
+
+		//Powersupply mounting holes
+		translate([0,0,2])
+		screw_socket( power_supply_screw_diameter, bracket_thickness+5 );
 	}
 }
  
