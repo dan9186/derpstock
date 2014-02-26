@@ -32,7 +32,7 @@ arm_screw_diameter = 4;
 power_supply_width = 122;
 power_supply_height = 56;
 power_supply_length = 221;
-power_supply_screw_diameter = 4;
+power_supply_screw_diameter = 3;
 power_supply_screw_separation = 25;
 power_supply_mount_hole_inset = 33;
 
