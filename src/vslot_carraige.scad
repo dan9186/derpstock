@@ -56,10 +56,15 @@ module vslot_carriage(){
 			}
 		}
 
+		// Screw and nut trap holes for all join horns
 		for(lr=[-1,1]){
 			translate([lr*(midpoint+6),r1*2/3-6,carriage_thickness+2.5])
 			rotate([0,lr*90,0])
 			#screw_socket(3,20);
+
+			translate([lr*(midpoint-9.5),r1*2/3-6,carriage_thickness+2.5])
+			rotate([0,lr*90,0])
+			cylinder(r=m3_nut_radius, h=10, center=true, $fn=6);
 		}
 
 		// VWheels
