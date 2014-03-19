@@ -70,7 +70,7 @@ sticky_width = 25.4;
 sticky_length = 25.4;
 
 // Wheel variables for carriage
-wheel_separation = 2*21.5;
+wheel_separation = 2*20.5;
 wheel_diameter=24.39;
 wheel_thickness=10.23;
 
