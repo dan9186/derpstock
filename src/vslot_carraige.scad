@@ -68,10 +68,10 @@ module vslot_carriage(){
 		}
 
 		// VWheels
-		translate([-24.39+3,0,-3-extrusion/2])
+		translate([-wheel_separation/2,0,-3-extrusion/2])
 		#vwheel();
 		for(tb=[-1,1]){
-			translate([24.39-3,tb*(24.39-3),-3-extrusion/2])
+			translate([wheel_separation/2,tb*(wheel_diameter-3),-3-extrusion/2])
 			#vwheel();
 		}
 	}
