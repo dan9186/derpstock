@@ -50,7 +50,8 @@
 ## Assembling Triangles
 
 * 2 assemblies (bar, vertex, bar) & (vertex, bar, vertex)
-* 
+* Double flanged bearings (2xF608ZZ)
+* The double flanged bearings are to be installed last.
 
 ## Assembling uprights
 
