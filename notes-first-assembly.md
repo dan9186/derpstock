@@ -50,7 +50,8 @@
 ## Assembling Triangles
 
 * 2 assemblies (bar, vertex, bar) & (vertex, bar, vertex)
-* 
+* Double flanged bearings (2xF608ZZ)
+* The double flanged bearings are to be installed last.
 
 ## Assembling uprights
 
@@ -61,3 +62,28 @@
 
 * 750mm seems to be the sweet spot
 * 1m has wobble
+* 
+
+# Mechanical notes
+
+## Motors
+
+* Derpstock nameplate is front and center
+* X motor Front right
+* Y motor Front Left
+* Z motor Rear Center
+* Movement of effector plate follows traditional XY movement
+* 
+
+# Wiring
+
+## Effector
+* 10 pin connector at the base for effector wiring or:
+* 6 Pin connector at the base for effector wiring (bed leveling)
+    * 2 pins for microswitch
+    * 3 pins for Servo
+        * Servo and cooling fan share ground
+    * 2 pins for fan
+* 4 pin connector for hot end
+    * 2 pins for hot end
+    * 2 pins for thermistor
