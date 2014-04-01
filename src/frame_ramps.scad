@@ -32,8 +32,14 @@ module ramps_mount(){
 			// Extrusion Plate
 			minkowski(){
 				translate([-extrusion-7.5,-19,3-extra_space]) cube([2*extrusion+81.5+7.5,thickness,extrusion+2*extra_space-6]);
-				rotate([90,0,0])cylinder(r=3, h=1);
+				rotate([90,0,0])cylinder(r=3, h=0.5);
 			}
+
+			// Printing Pads
+			translate([-extrusion/2-7.5,-extrusion/2-2*thickness,0])
+			cylinder(r=2*thickness, h=0.5, center=true);
+			translate([81.5+extrusion/2,-extrusion/2-thickness*2,0])
+			cylinder(r=2*thickness, h=0.5, center=true);
 		}
 
 		// Arduino Holes
