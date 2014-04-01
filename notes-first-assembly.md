@@ -63,7 +63,7 @@
 * 1m has wobble
 * 
 
-# Movement notes
+# Mechanical notes
 
 ## Motors
 
