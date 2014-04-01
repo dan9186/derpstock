@@ -47,24 +47,16 @@ module vslot_carriage(){
 			// Ball joint mount horns
 			for(lr=[-1,1]){
 				scale([lr,1,1]) intersection() {
-					translate([midpoint,r1*2/3-6.5,15/2])
-					cube([12,15,15], center=true);
-					translate([midpoint-6,r1*2/3-6,carriage_thickness+2.5])
-					rotate([0, 90, 0])
+					translate([midpoint-15/2,r1*2/3-5,15/2+carriage_thickness])
+					cube([15,12,15], center=true);
+					translate([midpoint-15/2,r1*2/3-5,carriage_thickness])
+					//rotate([0, 90, 0])
 					cylinder(r1=14, r2=2.5, h=12);
 				}
+
+			translate([lr*(midpoint-15/2),r1*2/3-5,carriage_thickness+12.5])
+			#screw_socket(2.8,20);
 			}
-		}
-
-		// Screw and nut trap holes for all join horns
-		for(lr=[-1,1]){
-			translate([lr*(midpoint+6),r1*2/3-6,carriage_thickness+2.5])
-			rotate([0,lr*90,0])
-			#screw_socket(3,20);
-
-			translate([lr*(midpoint-9.5),r1*2/3-6,carriage_thickness+2.5])
-			rotate([0,lr*90,0])
-			cylinder(r=m3_nut_radius, h=10, center=true, $fn=6);
 		}
 
 		// VWheels
