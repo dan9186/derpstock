@@ -78,7 +78,7 @@
 # Wiring
 
 ## Effector
-* 10 pin connector or:
+* 10 pin connector at the base for effector wiring or:
 * 6 Pin connector at the base for effector wiring (bed leveling)
     * 2 pins for microswitch
     * 3 pins for Servo
