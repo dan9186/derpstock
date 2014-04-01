@@ -61,3 +61,14 @@
 
 * 750mm seems to be the sweet spot
 * 1m has wobble
+* 
+
+# Movement notes
+
+## Motors
+
+* Derpstock nameplate is front and center
+* X motor Front right
+* Y motor Front Left
+* Z motor Rear Center
+* Movement of effector plate follows traditional XY movement
