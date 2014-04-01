@@ -73,3 +73,17 @@
 * Y motor Front Left
 * Z motor Rear Center
 * Movement of effector plate follows traditional XY movement
+* 
+
+# Wiring
+
+## Effector
+* 10 pin connector or:
+* 6 Pin connector at the base for effector wiring (bed leveling)
+    * 2 pins for microswitch
+    * 3 pins for Servo
+        * Servo and cooling fan share ground
+    * 2 pins for fan
+* 4 pin connector for hot end
+    * 2 pins for hot end
+    * 2 pins for thermistor
