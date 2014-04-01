@@ -9,9 +9,9 @@ module belt_clamp(){
 		hull(){
 			translate([extrusion/3,0,0])
 			rotate([0,0,180])
-			cylinder(r=extrusion/3, h=1.5*belt_width, center=true, $fn=3);
+			cylinder(r=extrusion/3, h=1.5*belt_width+6.5, center=true, $fn=3);
 			translate([extrusion/3+sin(30)*extrusion/3+extrusion/3/2,0,0])
-			cube([extrusion/3,cos(30)*extrusion/3*2.15,1.5*belt_width], center=true);
+			cube([extrusion/3,cos(30)*extrusion/3*2.15,1.5*belt_width+6.5], center=true);
 		}
 	}
 }
@@ -40,7 +40,7 @@ module vslot_carriage(){
 	
 			for(tb=[-1,1]){
 				rotate([0,0,180])
-				translate([-2*extrusion/3,tb*(extrusion/3*1.25+belt_width),carriage_thickness])
+				translate([-2*extrusion/3,tb*(extrusion/3*1.1+belt_width),carriage_thickness])
 				belt_clamp();
 			}
 
