@@ -123,7 +123,7 @@ module microswitch() {
 	difference() {
 		union() {
 			translate([0, 0, 5])
-			cube([19.8, 6, 10], center=true);
+			cube([19.8+2*extra_space, 6+2*extra_space, 10], center=true);
 			translate([2.5, 0.5, 8.5])
 			cube([2, 3.5, 5], center=true);
 			for (x = [-8, -1, 8]) {

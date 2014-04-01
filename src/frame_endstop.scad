@@ -1,34 +1,38 @@
 include <../configuration.scad>;
 
-heat_screw_insert = 3;
-
 module endstop(){
 	difference(){
-		union(){
-			translate([0,-(extrusion+extra_extrusion_space)/2-thickness-3,5])
-			cube([extrusion+2*thickness,6+2*thickness,10], center=true);
-
-			translate([extrusion/2,-(6+2*thickness)/2,5])
-			cube([thickness+extrusion/2,extrusion+6*extra_space+6+2*thickness,10], center=true);
+		//Basic Shape
+		hull(){
+			cylinder(r=extrusion-3, h=10, center=true);
+			translate([0,-extrusion/2-10/2,0])
+			cube([20+2*thickness,10,10], center=true);
 		}
 
-		translate([-10,-(extrusion+extra_extrusion_space)/2-6-thickness-extra_space,-1])
-		cube([20,6+2*extra_space,12]);
+		//Extrusion cutout
+		extrusion_cutout(40, extra_extrusion_space);
 
-		translate([(extrusion+6*extra_space)/2+3/2*thickness,0,5])
+		//Screw cutout
+		translate([(extrusion+6*extra_space)/2+3/2*thickness,0,0])
 		rotate([0,90,0])
 		screw_socket(5,10);
 
-		translate([(extrusion+thickness+1)/2,-(extrusion+6*extra_space)/2-(6+2*thickness)/2,5])
-		rotate([0,90,0])
-		cylinder(r=2,h=10,center=true,$fn=20);
+		translate([(extrusion+extra_extrusion_space-5)/2,0,0])
+		cube([5,5,15], center=true);
 
-		extrusion_cutout(40, extra_extrusion_space);
+		//Heatset cutout
+		translate([10+thickness/2,-extrusion/2-10/2,0])
+		rotate([0,90,0])
+		cylinder(r=5.1/2, h=10, center=true);
+
+		//Endstop cutout
+		translate([0,-extrusion/2-10/2,0])
+		cube([20+4*extra_space,6+4*extra_space,15], center=true);
 	}
 }
 
 %extrusion_cutout(40, extra_extrusion_space);
 
-%translate([0,-(extrusion+extra_extrusion_space)/2-3-thickness,0])
+%translate([0,-(extrusion)/2-10/2,-5])
 microswitch();
 endstop();
