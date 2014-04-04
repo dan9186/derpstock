@@ -53,10 +53,13 @@ module vslot_carriage(){
 					//rotate([0, 90, 0])
 					cylinder(r1=14, r2=2.5, h=12);
 				}
-
-			translate([lr*(midpoint-15/2),r1*2/3-5,carriage_thickness+12.5])
-			#screw_socket(2.8,20);
 			}
+		}
+
+		// Ball joint screw mounts
+		for(lr=[-1,1]){
+			translate([lr*(midpoint-15/2),r1*2/3-5,carriage_thickness+12.5])
+			screw_socket(2.8,20);
 		}
 
 		// VWheels
