@@ -77,6 +77,10 @@ wheel_thickness=10.23;
 // Belt variables
 belt_width = 5;
 
+// Magnet
+magnet_diameter = 8;
+magnet_radius = magnet_diameter/2 + 2*extra_radius;
+
 //******* Universal Objects *******//
 
 // Basic 608ZZ bearing
