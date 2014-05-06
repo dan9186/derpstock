@@ -10,7 +10,7 @@ bsp_height = 3.8;
 bsp_diameter = 3.5;
 bsp_radius = bsp_diameter/2;
 
-effector_diameter = 60;
+effector_diameter = 50;
 effector_angle = 30;
 effector_height = insulator_height + bsp_height;
 
