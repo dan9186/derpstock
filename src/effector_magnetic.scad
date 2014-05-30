@@ -3,8 +3,8 @@ include <../configuration.scad>;
 $fn = 24;
 
 insulator_height = 4.95;
-insulator_diameter = 16;
-insulator_radius = insulator_diameter/2;
+insulator_diameter = 16.5;
+insulator_radius = insulator_diameter/2 + extra_radius;
 
 bsp_height = 3.8;
 bsp_diameter = 3.5;
