@@ -27,7 +27,7 @@ module endstop(){
 
 		//Endstop cutout
 		translate([0,-extrusion/2-10/2,0])
-		cube([20+4*extra_space,6+4*extra_space,15], center=true);
+		cube([20+8*extra_space,6+6*extra_space,15], center=true);
 	}
 }
 
