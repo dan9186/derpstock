@@ -44,7 +44,7 @@
 * Misuimi 428mm (9 cross bars)
 * Vslot 1M (3 vertical bars)
 * Effector Arms
-    * Roughly 75% of 8mm 50mm carbon rod (308mm + 2x(endcaps + screw balls (dan estimate 42mm added) (cd estimate 56mm added))) 
+    * Roughly 75% of 8mm 50mm carbon rod (318mm + 2x(endcaps + screw balls (dan estimate 42mm added) (cd estimate 56mm added))) 
 ## Bed mounting 
 
 * M5 12mm (currently unless we countersink) low profile (openbuilds)
