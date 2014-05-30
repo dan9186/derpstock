@@ -15,6 +15,7 @@
 * M5 10mm crossbeam vslot NO WASHERS
 * M5 12mm crossbeam vslot WITH WASHERS
 * Vslot cutouts almost perfect, self cleaning
+* Use the M4(3mm) driver to space the pulley away from the vertex to align the belt path 
 
 ###frame_vertex
 * M8 screw cuts threads well for the first portion, and well enough for the second. 
@@ -43,7 +44,7 @@
 * Misuimi 428mm (9 cross bars)
 * Vslot 1M (3 vertical bars)
 * Effector Arms
-    * Roughly 75% of 8mm 50mm carbon rod (~35mm first run)
+    * Roughly 75% of 8mm 50mm carbon rod (308mm + 2x(endcaps + screw balls (dan estimate 42mm added) (cd estimate 56mm added))) 
 ## Bed mounting 
 
 * M5 12mm (currently unless we countersink) low profile (openbuilds)
@@ -67,7 +68,7 @@
 
 # Mechanical notes
 
-## Assembling Armm
+## Assembling Arm
 
 * 
 
