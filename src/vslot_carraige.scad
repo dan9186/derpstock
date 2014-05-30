@@ -59,7 +59,7 @@ module vslot_carriage(){
 		// Ball joint screw mounts
 		for(lr=[-1,1]){
 			translate([lr*(midpoint-15/2),r1*2/3-5,carriage_thickness+12.5])
-			screw_socket(2.8,20);
+			screw_socket(2.4,20);
 		}
 
 		// VWheels
