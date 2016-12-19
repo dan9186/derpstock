@@ -46,7 +46,7 @@ module frame_motor() {
 			for ( z = [-1, 1] ){
 				for ( lr = [-1, 1] ){
 					translate([lr*16,20.25+30-extrusion/2,z*15.5]) rotate([90,0,lr*30])
-					cylinder(r=3*1.5/2+extra_radius*6, h=30, $fn=12);
+					cylinder(r=5*1.5/2+extra_radius*6, h=30, $fn=12);
 				}
 			}
 	
@@ -63,7 +63,7 @@ module frame_motor() {
 				}
 
 				// Electronics wiring access
-				translate( [0,-30,0] )
+				translate([0,-30,0])
 				rotate([0, 0, 30*lr]) {
 					translate([lr*10, 90, 0]) rotate([0, lr*90, lr*45])
 					cube([15,5,20], center=true);
@@ -78,10 +78,10 @@ module frame_motor() {
 							hull(){
 								translate([0,5.5,z*(motor_mount_height/2-0.5)])
 								rotate([0, 0, -lr*30])
-								cylinder(r=tnut_width/sqrt(3)+3*extra_radius, h=extrusion/2+1, center=true, $fn=6);
+								cylinder(r=tnut_width/sqrt(3)+8*extra_radius, h=extrusion/2+1, center=true, $fn=6);
 								translate([0,-5.5,z*(motor_mount_height/2-0.5)])
 								rotate([0, 0, -lr*30])
-								cylinder(r=tnut_width/sqrt(3)+3*extra_radius, h=extrusion/2+1, center=true, $fn=6);
+								cylinder(r=tnut_width/sqrt(3)+8*extra_radius, h=extrusion/2+1, center=true, $fn=6);
 							}
 						}
 
@@ -89,10 +89,10 @@ module frame_motor() {
 						hull(){
 							translate([0,2.5,0])
 							rotate([0, 0, -lr*30])
-							cylinder(r=tnut_width/sqrt(3)+extra_radius, h=0.75*extrusion, center=true, $fn=6);
+							cylinder(r=tnut_width/sqrt(3)+extra_radius, h=1.2*extrusion, center=true, $fn=6);
 							translate([0,-2.5,0])
 							rotate([0, 0, -lr*30])
-							cylinder(r=tnut_width/sqrt(3)+extra_radius, h=0.75*extrusion, center=true, $fn=6);
+							cylinder(r=tnut_width/sqrt(3)+extra_radius, h=1.2*extrusion, center=true, $fn=6);
 						}
 					}
 				}
@@ -100,11 +100,7 @@ module frame_motor() {
 
 			// Wire access to extrusion
 			translate([0,0,0])
-			cube([extrusion+15,8,0.75*extrusion], center=true);
-	
-			// Logo for the front side of the object
-			translate([20,-extrusion/2,0]) rotate([90,-90,30])
-			scale([0.1,0.1,1]) derpstock_logo();
+			cube([extrusion+15,8,1.2*extrusion], center=true);
 	
 			% extrusion_cutout( motor_mount_height+20, extra_extrusion_space );
 		}
