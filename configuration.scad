@@ -1,7 +1,7 @@
 /*
 	Authors: Daniel Hess (dan9186)
 			 Claudio (orias)
-	Git Hub:  https://github.com/dan9186/Derpstock
+	Git Hub:  https://github.com/dan9186/derpstock
 	Original Base: Kossel https://github.com/jcrocholl/kossel
 */
 
