@@ -49,6 +49,7 @@ motor_length = 47;
 m3_nut_od = 6.1;
 m3_nut_radius = m3_nut_od/2 + 0.2 + extra_radius;
 m3_washer_radius = 3.5 + extra_radius;
+m3_nut_thickness = 2.4 + 2*extra_space;
 
 // Major diameter of M3 screws for motor
 m3_major = 2.85;
