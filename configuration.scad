@@ -75,6 +75,20 @@ wheel_separation = 2*(21.39-1.5-0.5);
 wheel_diameter=24.39;
 wheel_thickness=10.23;
 
+// Gantry variables for carriage
+gantry_corner_radius=6.17;
+gantry_thickness=6.35;
+gantry_height=50;
+gantry_width=gantry_height;
+
+gantry_axel_inset_depth=2;
+gantry_sm_axel_radius=5/2;
+gantry_sm_axel_inset_radius=10.10/2;
+gantry_md_axel_radius=7.14/2;
+gantry_md_axel_inset_radius=12/2;
+
+gantry_mount_radius=5.02/2;
+
 // Belt variables
 belt_width = 5;
 
@@ -248,6 +262,48 @@ module vwheel(){
 	translate([0,0,wheel_thickness/2])
 	screw_socket(5,25);
 	cylinder(r=wheel_diameter/2, h=wheel_thickness, center=true);
+}
+
+module mini_gantry(){
+    $fn=60;
+
+    difference(){
+        hull(){
+            for(tb=[-1,1]){
+                for(lr=[-1,1]){
+                    translate([lr*(gantry_width/2-gantry_corner_radius),tb*(gantry_height/2-gantry_corner_radius),0])
+                    cylinder(r=gantry_corner_radius, h=gantry_thickness);
+                }
+            }
+        }
+
+        // mounting holes
+        translate([0,0,-0.5]){
+            cylinder(r=gantry_mount_radius, h=gantry_thickness+1);
+            for(lr=[-1,1]){
+                translate([lr*10,0,0])
+                cylinder(r=gantry_mount_radius, h=gantry_thickness+1);
+                translate([0,lr*10,0])
+                cylinder(r=gantry_mount_radius, h=gantry_thickness+1);
+            }
+        }
+
+        // wheel mounts
+        for(lr=[-1,1]){
+            translate([0,0,-0.5]){
+                translate([lr*(-gantry_width/2+9.05),-gantry_height/2+9.05,0]){
+                    cylinder(r=gantry_sm_axel_radius, h=gantry_thickness+1);
+                    translate([0,0,gantry_thickness-gantry_axel_inset_depth+0.5])
+                    cylinder(r=gantry_sm_axel_inset_radius, h=gantry_axel_inset_depth+1);
+                }
+                translate([lr*(-gantry_width/2+9.05),gantry_height/2-10,0]){
+                    cylinder(r=gantry_md_axel_radius, h=gantry_thickness+1);
+                    translate([0,0,gantry_thickness-gantry_axel_inset_depth+0.5])
+                    cylinder(r=gantry_md_axel_inset_radius, h=gantry_axel_inset_depth+1);
+                }
+            }
+        }
+    }
 }
 
 module derpstock_logo(){
