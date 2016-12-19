@@ -28,7 +28,7 @@ tnut_length = 15;
 // Arm parameters
 arm_screw_diameter = 4;
 
-// Powersupply Settings 
+// Powersupply Settings
 power_supply_width = 122;
 power_supply_height = 56;
 power_supply_length = 221;
@@ -50,7 +50,7 @@ m3_nut_od = 6.1;
 m3_nut_radius = m3_nut_od/2 + 0.2 + extra_radius;
 m3_washer_radius = 3.5 + extra_radius;
 
-// Major diameter of M3 scres for motor
+// Major diameter of M3 screws for motor
 m3_major = 2.85;
 m3_radius = m3_major/2 + extra_radius;
 m3_wide_radius = m3_major/2 + extra_radius + 0.2;
@@ -97,7 +97,7 @@ module 608ZZ(){
 		difference(){
 			cylinder( r=8/2+5.5, h=1.5 );
 			translate( [0,0,-.25] ) cylinder( r=4+1.6, h=2 );
-		}	
+		}
 	}
 }
 
@@ -118,7 +118,7 @@ module F608ZZ(){
 		difference(){
 			cylinder( r=8/2+5.5, h=1.5 );
 			translate( [0,0,-.25] ) cylinder( r=4+1.6, h=2 );
-		}	
+		}
 	}
 }
 
@@ -223,7 +223,7 @@ module vertex_outline( height ){
 		// If there is room for two screws then allow it else do one in the center
 		if( height >= extrusion+1.5*tnut_screw_diameter+20*extra_space ){
 			for( z=[-1,1] ){
-				rotate( [90,0,0] ){
+				rotate([90,0,0]){
 					# translate([0,z*(height/2-extrusion/2),extrusion/2+15*extra_space+tnut_screw_diameter])
 					screw_socket(tnut_screw_diameter,tnut_screw_length);
 				}
@@ -231,7 +231,7 @@ module vertex_outline( height ){
 				cube([extrusion/3,extrusion/3,height+1], center=true);
 			}
 		}else{
-			rotate( [90,0,0] ){
+			rotate([90,0,0]){
 				// Socket Screw
 				# translate([0,0,extrusion/2+15*extra_space+tnut_screw_diameter])
 				screw_socket(tnut_screw_diameter,tnut_screw_length);
